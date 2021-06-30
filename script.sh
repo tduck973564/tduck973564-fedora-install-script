@@ -68,7 +68,9 @@ mkdir ~/Games
 echo Set up SSH and enable firewall to block all except on port 22
 sudo systemctl enable --now sshd
 sudo systemctl enable --now firewalld
-sudo firewall-cmd --permanent --zone=block
+for i in $( ifconfig -a | sed 's/[ \t].*//;/^\(lo\|\)$/d' ); do
+    firewall-cmd --zone=block --change-interface=$i
+done
 sudo firewall-cmd --permanent --add-service=ssh
 
 echo Install nvidia drivers if nvidia gpu is installed
