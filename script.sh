@@ -54,12 +54,11 @@ code --install-extension CoenraadS.bracket-pair-colorizer-2
 
 echo Installation of miscellaneous useful apps
 sudo dnf install -y discord ffmpeg pavucontrol pulseeffects chromium
-sudo update-alternatives --config x-www-browser
 
 echo Log into accounts on web browser
-chromium https://accounts.google.com/signin/
-chromium https://login.microsoftonline.com/
-chromium https://discord.com/app
+chromium-browser https://accounts.google.com/signin/
+chromium-browser https://login.microsoftonline.com/
+chromium-browser https://discord.com/app
 
 echo Make some folders
 mkdir ~/Repositories
@@ -69,6 +68,7 @@ mkdir ~/Games
 echo Set up SSH and enable firewall to block all except on port 22
 sudo systemctl enable --now ssh
 sudo systemctl enable --now firewalld
+sudo firewall-cmd --permanent --zone=block
 sudo firewall-cmd --permanent --add-service=ssh
 
 echo Install nvidia drivers if nvidia gpu is installed
