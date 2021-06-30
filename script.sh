@@ -81,8 +81,10 @@ echo Install onedrive
 sudo dnf install -y onedrive
 onedrive --synchronize
 
+echo Download icon theme and fonts
+sudo dnf install -y papirus-icon-theme fira-code-fonts google-roboto-fonts
+
 echo Fix font problems in SDDM
-sudo dnf install -y google-roboto-fonts
 sudo sh -c 'echo "<?xml version="1.0"?>
 <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 <fontconfig>
@@ -96,6 +98,3 @@ sudo sh -c 'echo "<?xml version="1.0"?>
     </prefer>
 </alias>
 </fontconfig>" > /etc/fonts/local.conf'
-
-echo Download icon theme
-sudo dnf install papirus-icon-theme
