@@ -38,7 +38,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-t
 
 echo Installation of Python
 sudo dnf install python
-python -m 'pip install -upgrade pip'
+pip install --upgrade pip
 pip install pylint
 
 echo Installation of VSCode extensions
