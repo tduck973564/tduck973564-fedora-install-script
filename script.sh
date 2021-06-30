@@ -18,7 +18,7 @@ echo Installation of Oh My Zsh!
 sudo dnf install util-linux-user zsh git
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
 chsh -s /usr/bin/zsh
-sed s/robbyrussell/lukerandall/ < ~/.zshrc > ~/.zshrc
+sed -i.bak s/robbyrussell/lukerandall/ ~/.zshrc
 
 echo Installation of GitHub CLI and setup of Git
 sudo dnf config-manager -y --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
