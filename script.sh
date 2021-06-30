@@ -58,6 +58,7 @@ echo Log into accounts on web browser
 chromium-browser https://accounts.google.com/signin/
 chromium-browser https://login.microsoftonline.com/
 chromium-browser https://discord.com/app
+chromium-browser https://github.com/login
 
 echo Make some folders
 mkdir ~/Repositories
