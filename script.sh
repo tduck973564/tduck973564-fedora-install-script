@@ -10,7 +10,6 @@ echo Installation of RPMFusion
 sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf groupupdate -y core
 sudo dnf groupupdate -y multimedia --setop="install_weak_deps=False"
-sudo dnf update -y sound-and-video
 
 echo Update system before continuing
 sudo dnf update -y
