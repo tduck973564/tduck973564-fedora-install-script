@@ -22,7 +22,7 @@ chsh -s /usr/bin/zsh
 sed s/robbyrussell/lukerandall/ ~/.zshrc > ~/.zshrc
 
 echo Installation of GitHub CLI and setup of Git
-sudo dnf config-manager --add-repo -y https://cli.github.com/packages/rpm/gh-cli.repo
+sudo dnf config-manager -y --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
 sudo dnf install -y gh
 sh -c "gh auth login"
 git config --global user.name "tduck973564"
