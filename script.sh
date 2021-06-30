@@ -97,4 +97,4 @@ sudo sh -c 'echo "<?xml version="1.0"?>
     </prefer>
 </alias>
 </fontconfig>" > /etc/fonts/local.conf'
-echo \nDone!
+echo -e \nDone!
