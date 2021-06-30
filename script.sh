@@ -50,6 +50,7 @@ code --install-extension serayuzgur.crates
 code --install-extension bungcip.better-toml
 code --install-extension emilast.LogFileHighlighter
 code --install-extension CoenraadS.bracket-pair-colorizer-2
+code --install-extension wakatime.vscode-wakatime
 
 echo Installation of miscellaneous useful apps
 sudo dnf install -y discord ffmpeg pavucontrol pulseeffects chromium
