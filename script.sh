@@ -55,7 +55,7 @@ echo Installation of miscellaneous useful apps
 sudo dnf install -y discord ffmpeg pavucontrol pulseeffects chromium
 
 echo Log into accounts on web browser
-chromium-browser https://accounts.google.com/signin/
+chromium-browser https://accounts.google.com/
 chromium-browser https://login.microsoftonline.com/
 chromium-browser https://discord.com/app
 chromium-browser https://github.com/login
