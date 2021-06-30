@@ -16,7 +16,7 @@ echo Update system before continuing
 sudo dnf update -y
 
 echo Installation of Oh My Zsh!
-sudo dnf install util-linux-user zsh
+sudo dnf install util-linux-user zsh git
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
 chsh -s /usr/bin/zsh
 sed s/robbyrussell/lukerandall/ ~/.zshrc > ~/.zshrc
