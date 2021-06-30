@@ -99,5 +99,5 @@ sudo sh -c 'echo "<?xml version="1.0"?>
 </alias>
 </fontconfig>" > /etc/fonts/local.conf'
 echo Uninstall unneeded software
-sudo dnf remove -y discover firefox
+sudo dnf remove -y plasma-discover firefox
 echo -e \nDone!
