@@ -69,7 +69,8 @@ echo Set up SSH and enable firewall to block all except on port 22
 sudo systemctl enable --now sshd
 sudo systemctl enable --now firewalld
 for i in $( ifconfig -a | sed 's/[ \t].*//;/^\(lo\|\)$/d' ); do
-    firewall-cmd --zone=block --change-interface=$i
+    sudo firewall-cmd --zone=block --change-interface=$i
+    echo Added $i to block zone
 done
 sudo firewall-cmd --permanent --add-service=ssh
 
