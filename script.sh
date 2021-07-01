@@ -53,6 +53,7 @@ code --install-extension CoenraadS.bracket-pair-colorizer-2
 code --install-extension wakatime.vscode-wakatime
 code --install-extension michelemelluso.code-beautifier
 code --install-extension mrmlnc.vscode-scss
+code --install-extension ritwickdey.liveserver
 
 echo Installation of miscellaneous useful apps
 sudo dnf install -y discord ffmpeg pavucontrol pulseeffects chromium
