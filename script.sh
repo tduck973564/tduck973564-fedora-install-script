@@ -40,6 +40,10 @@ sudo dnf install python
 pip install --upgrade pip
 pip install pylint
 
+echo Installation of TypeScript and JavaScript
+sudo dnf install nodejs
+sudo npm install -g typescript
+
 echo Installation of VSCode extensions
 code --install-extension ms-python.python
 code --install-extension VisualStudioExptTeam.vscodeintellicode
@@ -54,6 +58,7 @@ code --install-extension wakatime.vscode-wakatime
 code --install-extension michelemelluso.code-beautifier
 code --install-extension mrmlnc.vscode-scss
 code --install-extension ritwickdey.liveserver
+code --install-extension ritwickdey.live-sass
 
 echo Installation of miscellaneous useful apps
 sudo dnf install -y discord ffmpeg pavucontrol pulseeffects chromium
