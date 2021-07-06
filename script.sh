@@ -59,6 +59,8 @@ code --install-extension michelemelluso.code-beautifier
 code --install-extension mrmlnc.vscode-scss
 code --install-extension ritwickdey.liveserver
 code --install-extension ritwickdey.live-sass
+code --install-extension github.vscode-pull-request-github
+code --install-extension eamodio.gitlens
 
 echo Installation of miscellaneous useful apps
 sudo dnf install -y discord ffmpeg pavucontrol pulseeffects chromium
