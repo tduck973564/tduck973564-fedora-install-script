@@ -46,13 +46,11 @@ sudo dnf install nodejs
 sudo npm install -g typescript
 
 echo Installation of Java
-sudo dnf install java-17-openjdk java-17-openjdk-devel
-sudo alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+sudo dnf install -y java-17-openjdk java-17-openjdk-devel
+sudo alternatives --set java /lib/jvm/jdk-17-openjdk/bin/java
 
 echo Installation of build-essential equivalent, clang, Meson and Ninja
-sudo dnf install make automake gcc gcc-c++ kernel-devel clang meson ninja-build
-sudo alternatives --set cc /usr/bin/clang
-sudo alternatives --set c++ /usr/bin/clang++
+sudo dnf install -y make automake gcc gcc-c++ kernel-devel clang meson ninja-build
 
 echo Installation of JetBrains
 curl -fsSL https://raw.githubusercontent.com/nagygergo/jetbrains-toolbox-install/master/jetbrains-toolbox.sh | bash
@@ -112,7 +110,7 @@ sudo dnf install -y onedrive
 onedrive --synchronize
 
 echo Download icon theme and fonts
-sudo dnf install -y papirus-icon-theme fira-code-fonts google-roboto-fonts ibm-plex-fonts rsms-inter-fonts
+sudo dnf install -y papirus-icon-theme fira-code-fonts google-roboto-fonts ibm-plex-fonts rsms-inter-fonts materia-kde*
 
 <<comment 
 echo Fix font problems in SDDM
