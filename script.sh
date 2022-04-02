@@ -47,7 +47,6 @@ sudo npm install -g typescript
 
 echo Installation of Java
 sudo dnf install -y java-17-openjdk java-17-openjdk-devel
-sudo alternatives --set java /lib/jvm/java-17-openjdk/bin/java
 
 echo Installation of build-essential equivalent, clang, Meson and Ninja
 sudo dnf install -y make automake gcc gcc-c++ kernel-devel clang meson ninja-build
