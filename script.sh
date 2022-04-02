@@ -45,6 +45,19 @@ echo Installation of TypeScript and JavaScript
 sudo dnf install nodejs
 sudo npm install -g typescript
 
+echo Installation of Java
+sudo dnf install java-17-openjdk java-17-openjdk-devel
+sudo alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+
+echo Installation of build-essential equivalent, clang, Meson and Ninja
+sudo dnf install make automake gcc gcc-c++ kernel-devel clang meson ninja-build
+sudo alternatives --set cc /usr/bin/clang
+sudo alternatives --set c++ /usr/bin/clang++
+
+echo Installation of JetBrains
+curl -fsSL https://raw.githubusercontent.com/nagygergo/jetbrains-toolbox-install/master/jetbrains-toolbox.sh | bash
+jetbrains-toolbox
+
 echo Installation of VSCode extensions
 code --install-extension ms-python.python
 code --install-extension VisualStudioExptTeam.vscodeintellicode
@@ -62,15 +75,17 @@ code --install-extension ritwickdey.liveserver
 code --install-extension ritwickdey.live-sass
 code --install-extension github.vscode-pull-request-github
 code --install-extension eamodio.gitlens
+code --install-extension ms-vscode.cpptools-extension-pack
+code --install-extension mesonbuild.mesonbuild
 
 echo Installation of miscellaneous useful apps
-sudo dnf install -y discord ffmpeg pavucontrol pulseeffects chromium
+sudo dnf install -y discord ffmpeg pavucontrol pulseeffects
 
 echo Log into accounts on web browser
-chromium-browser https://accounts.google.com/
-chromium-browser https://login.microsoftonline.com/
-chromium-browser https://discord.com/app
-chromium-browser https://github.com/login
+firefox https://accounts.google.com/
+firefox https://login.microsoftonline.com/
+firefox https://discord.com/app
+firefox https://github.com/login
 
 echo Make some folders
 mkdir ~/Repositories
@@ -97,8 +112,9 @@ sudo dnf install -y onedrive
 onedrive --synchronize
 
 echo Download icon theme and fonts
-sudo dnf install -y papirus-icon-theme fira-code-fonts google-roboto-fonts
+sudo dnf install -y papirus-icon-theme fira-code-fonts google-roboto-fonts ibm-plex-fonts rsms-inter-fonts
 
+<<comment 
 echo Fix font problems in SDDM
 sudo sh -c 'echo "<?xml version="1.0"?>
 <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
@@ -113,6 +129,6 @@ sudo sh -c 'echo "<?xml version="1.0"?>
     </prefer>
 </alias>
 </fontconfig>" > /etc/fonts/local.conf'
-echo Uninstall unneeded software
-sudo dnf remove -y plasma-discover firefox
+comment
+
 echo -e '\nDone!'
