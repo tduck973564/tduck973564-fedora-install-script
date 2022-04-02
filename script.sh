@@ -110,7 +110,7 @@ sudo dnf install -y onedrive
 onedrive --synchronize
 
 echo Download icon theme and fonts
-sudo dnf install -y papirus-icon-theme fira-code-fonts google-roboto-fonts ibm-plex-fonts rsms-inter-fonts materia-kde*
+sudo dnf install -y papirus-icon-theme fira-code-fonts google-roboto-fonts ibm-plex-fonts rsms-inter-fonts materia-kde* materia-gtk-theme
 
 <<comment 
 echo Fix font problems in SDDM
