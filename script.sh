@@ -64,7 +64,6 @@ code --install-extension matklad.rust-analyzer
 code --install-extension serayuzgur.crates
 code --install-extension bungcip.better-toml
 code --install-extension emilast.LogFileHighlighter
-code --install-extension CoenraadS.bracket-pair-colorizer-2
 code --install-extension wakatime.vscode-wakatime
 code --install-extension michelemelluso.code-beautifier
 code --install-extension mrmlnc.vscode-scss
@@ -74,6 +73,8 @@ code --install-extension github.vscode-pull-request-github
 code --install-extension eamodio.gitlens
 code --install-extension ms-vscode.cpptools-extension-pack
 code --install-extension mesonbuild.mesonbuild
+
+echo Set VSCode settings
 
 echo Installation of miscellaneous useful apps
 sudo dnf install -y discord ffmpeg pavucontrol pulseeffects
@@ -127,5 +128,9 @@ sudo sh -c 'echo "<?xml version="1.0"?>
 </alias>
 </fontconfig>" > /etc/fonts/local.conf'
 comment
+
+echo Dotfiles
+git clone https://github.com/tduck973564/dotfiles .dotfiles
+echo ". ~/.dotfiles/.aliases" >> .zshrc
 
 echo -e '\nDone!'
