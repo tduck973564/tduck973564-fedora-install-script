@@ -82,7 +82,7 @@ code --install-extension llvm-vs-code-extensions.vscode-clangd
 echo Set VSCode settings
 
 echo Installation of miscellaneous useful apps
-sudo dnf install -y discord ffmpeg pavucontrol pulseeffects
+sudo dnf install -y discord ffmpeg pavucontrol pulseeffects gnome-tweaks
 
 echo Log into accounts on web browser
 firefox https://accounts.google.com/
