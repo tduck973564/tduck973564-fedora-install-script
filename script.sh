@@ -39,7 +39,7 @@ echo Installation of Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable --profile default -y
 
 echo Installation of Python
-sudo dnf install python
+sudo dnf install python pip
 pip install --upgrade pip
 pip install pylint
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
