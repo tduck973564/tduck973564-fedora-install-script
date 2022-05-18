@@ -146,6 +146,10 @@ sudo dnf install adw-gtk3
 flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
 
 echo Install firefox theme
-curl -s -o- https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh | bash
+cd ~/Repositories
+git clone https://github.com/rafaelmardojai/firefox-gnome-theme
+cd firefox-gnome-theme
+./scripts/auto-install.sh
+cd ~
 
 echo -e '\nDone!'
