@@ -113,6 +113,8 @@ fi
 echo Install onedrive
 sudo dnf install -y onedrive
 onedrive --synchronize
+systemctl --user enable onedrive
+systemctl --user start onedrive
 
 echo Download icon theme and fonts
 sudo dnf install -y papirus-icon-theme fira-code-fonts google-roboto-fonts ibm-plex-fonts-all rsms-inter-fonts materia-kde* materia-gtk-theme
