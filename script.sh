@@ -42,7 +42,7 @@ echo Installation of Python
 sudo dnf install python pip
 pip install --upgrade pip
 pip install pylint
-curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+curl -sSL https://install.python-poetry.org | python3 -
 
 echo Installation of TypeScript and JavaScript
 sudo dnf install nodejs
