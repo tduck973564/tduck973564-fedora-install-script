@@ -63,7 +63,7 @@ code --install-extension ms-python.python
 code --install-extension VisualStudioExptTeam.vscodeintellicode
 code --install-extension vadimcn.vscode-lldb
 code --install-extension icrawl.discord-vscode
-code --install-extension matklad.rust-analyzer
+code --install-extension rust-lang.rust-analyzer
 code --install-extension serayuzgur.crates
 code --install-extension bungcip.better-toml
 code --install-extension emilast.LogFileHighlighter
