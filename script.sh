@@ -3,6 +3,9 @@
 # Fedora Install Script by tduck973564
 # Makes life a little bit easier
 
+echo CD into home directory
+cd ~
+
 echo Adding Flathub to Flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
@@ -132,12 +135,15 @@ sudo sh -c 'echo "<?xml version="1.0"?>
 comment
 
 echo Dotfiles
-git clone https://github.com/tduck973564/dotfiles .dotfiles
-echo ". ~/.dotfiles/.aliases" >> .zshrc
+git clone https://github.com/tduck973564/dotfiles ~/.dotfiles
+echo ". ~/.dotfiles/.aliases" >> ~/.zshrc
 
 echo "Fix inconsistent GNOME 42 theming; you will need to enable the theme in tweaks"
 sudo dnf copr enable nickavem/adw-gtk3 -y
 sudo dnf install adw-gtk3
 flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
+
+echo Install firefox theme
+curl -s -o- https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh | bash
 
 echo -e '\nDone!'
