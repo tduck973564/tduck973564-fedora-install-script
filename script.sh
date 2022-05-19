@@ -14,8 +14,12 @@ sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-rel
 sudo dnf groupupdate -y core
 sudo dnf groupupdate -y multimedia --setop="install_weak_deps=False"
 
+echo Patch GNOME
+echo "[Settings]\ngtk-hint-font-metrics=1" >> ~/.config/gtk-4.0/settings.ini
+sudo dnf copr enable calcastor/gnome-patched
+
 echo Update system before continuing
-sudo dnf update -y
+sudo dnf --refresh upgrade -y
 
 echo Installation of Oh My Zsh!
 sudo dnf install util-linux-user zsh git
