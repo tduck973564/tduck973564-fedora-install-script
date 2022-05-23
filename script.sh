@@ -31,8 +31,14 @@ echo Installation of GitHub CLI and setup of Git
 sudo dnf config-manager -y --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
 sudo dnf install -y gh
 sh -c "gh auth login"
-git config --global user.name "tduck973564"
-git config --global user.email "tduck973564@gmail.com"
+
+echo "Type in your git username: "
+read GITUSERNAME
+echo "Type in your git email: "
+read GITEMAIL
+
+git config --global user.name $GITUSERNAME
+git config --global user.email  $GITEMAIL
 
 echo Installation of VSCode
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
