@@ -56,7 +56,7 @@ curl -sSL https://install.python-poetry.org | python3 -
 
 echo Installation of TypeScript and JavaScript
 sudo dnf install nodejs
-sudo npm install -g typescript
+sudo npm install -g typescript npm
 
 echo Installation of Java
 sudo dnf install -y java-17-openjdk java-17-openjdk-devel
