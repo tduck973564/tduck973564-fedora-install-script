@@ -92,7 +92,7 @@ code --install-extension llvm-vs-code-extensions.vscode-clangd
 echo Set VSCode settings
 
 echo Installation of miscellaneous useful apps
-sudo dnf install -y discord ffmpeg pavucontrol pulseeffects gnome-tweaks
+sudo dnf install -y discord ffmpeg pavucontrol pulseeffects gnome-tweaks firewall-config
 flatpak install -y com.github.tchx84.Flatseal org.gnome.Extensions
 
 echo Log into accounts on web browser
@@ -128,7 +128,7 @@ systemctl --user enable onedrive
 systemctl --user start onedrive
 
 echo Download icon theme and fonts
-sudo dnf install -y papirus-icon-theme fira-code-fonts google-roboto-fonts ibm-plex-fonts-all rsms-inter-fonts materia-gtk-theme firewall-config
+sudo dnf install -y papirus-icon-theme fira-code-fonts google-roboto-fonts ibm-plex-fonts-all rsms-inter-fonts materia-gtk-theme
 
 <<comment 
 echo Fix font problems in SDDM
