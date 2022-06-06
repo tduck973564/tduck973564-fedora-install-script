@@ -128,7 +128,7 @@ systemctl --user enable onedrive
 systemctl --user start onedrive
 
 echo Download icon theme and fonts
-sudo dnf install -y papirus-icon-theme fira-code-fonts google-roboto-fonts ibm-plex-fonts-all rsms-inter-fonts materia-gtk-theme
+sudo dnf install -y papirus-icon-theme fira-code-fonts google-roboto-fonts ibm-plex-fonts-all rsms-inter-fonts materia-gtk-theme firewall-config
 
 <<comment 
 echo Fix font problems in SDDM
