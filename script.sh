@@ -85,6 +85,7 @@ code --install-extension ritwickdey.live-sass
 code --install-extension github.vscode-pull-request-github
 code --install-extension eamodio.gitlens
 code --install-extension ms-vscode.cpptools-extension-pack
+code --install-extension ms-vscode.makefile-tools
 code --install-extension mesonbuild.mesonbuild
 code --uninstall-extension ms-vscode.cpptools
 code --install-extension llvm-vs-code-extensions.vscode-clangd
