@@ -70,7 +70,8 @@ jetbrains-toolbox
 
 echo Installation of VSCode extensions
 code --install-extension ms-python.python
-code --install-extension VisualStudioExptTeam.vscodeintellicode
+code --install-extension GitHub.copilot
+code --install-extension GitHub.copilot-labs
 code --install-extension vadimcn.vscode-lldb
 code --install-extension icrawl.discord-vscode
 code --install-extension rust-lang.rust-analyzer
