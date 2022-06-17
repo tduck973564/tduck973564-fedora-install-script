@@ -125,7 +125,7 @@ fi
 
 echo Install onedrive
 sudo dnf install -y onedrive
-onedrive --synchronize
+onedrive
 systemctl --user enable onedrive
 systemctl --user start onedrive
 
