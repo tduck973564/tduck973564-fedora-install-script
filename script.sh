@@ -7,7 +7,8 @@ echo CD into home directory
 cd ~
 
 echo Adding Flathub to Flatpak
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-delete flathub
+flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
 
 echo Installation of RPMFusion
 sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
