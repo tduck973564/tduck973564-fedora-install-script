@@ -95,7 +95,7 @@ code --install-extension llvm-vs-code-extensions.vscode-clangd
 echo Set VSCode settings
 
 echo Installation of miscellaneous useful apps
-sudo dnf install -y discord ffmpeg pavucontrol pulseeffects gnome-tweaks firewall-config
+sudo dnf install -y discord ffmpeg pavucontrol pulseeffects gnome-tweaks firewall-config seahorse
 flatpak install -y com.github.tchx84.Flatseal org.gnome.Extensions
 
 echo Log into accounts on web browser
