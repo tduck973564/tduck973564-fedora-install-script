@@ -95,8 +95,9 @@ code --install-extension llvm-vs-code-extensions.vscode-clangd
 echo Set VSCode settings
 
 echo Installation of miscellaneous useful apps
-sudo dnf install -y discord ffmpeg pavucontrol pulseeffects gnome-tweaks firewall-config seahorse
-flatpak install -y com.github.tchx84.Flatseal org.gnome.Extensions
+sudo dnf remove -y gnome-terminal
+sudo dnf install -y discord ffmpeg pavucontrol pulseeffects gnome-tweaks firewall-config seahorse gnome-console
+flatpak install -y com.github.tchx84.Flatseal org.gnome.Extensions io.github.realmazharhussain.GdmSettings
 
 echo Log into accounts on web browser
 firefox https://accounts.google.com/
@@ -157,7 +158,7 @@ echo ". ~/.dotfiles/.aliases" >> ~/.zshrc
 echo "Fix inconsistent GNOME 42 theming; you will need to enable the theme in tweaks"
 sudo dnf copr enable nickavem/adw-gtk3 -y
 sudo dnf install adw-gtk3
-flatpak install -y org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark io.github.realmazharhussain.GdmSettings
+flatpak install -y org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark 
 
 echo Install firefox theme
 cd ~/Repositories
