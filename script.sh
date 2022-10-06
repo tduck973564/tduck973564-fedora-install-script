@@ -22,10 +22,14 @@ sudo dnf groupupdate -y multimedia --setop="install_weak_deps=False"
 
 echo Patch GNOME
 echo "[Settings]\ngtk-hint-font-metrics=1" >> ~/.config/gtk-4.0/settings.ini
-sudo dnf copr enable calcastor/gnome-patched
+sudo dnf copr enable calcastor/gnome-patched -y
 
 echo Update system before continuing
 sudo dnf --refresh upgrade -y
+
+echo Xanmod kernel
+sudo dnf copr enable rmnscnce/kernel-xanmod -y
+sudo dnf install kernel-xanmod-edge -y
 
 echo Installation of Oh My Zsh!
 sudo dnf install util-linux-user zsh git
