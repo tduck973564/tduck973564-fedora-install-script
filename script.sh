@@ -31,6 +31,9 @@ echo Xanmod kernel
 sudo dnf copr enable rmnscnce/kernel-xanmod -y
 sudo dnf install kernel-xanmod-edge -y
 
+echo Install wine
+sudo dnf install wine winetricks bottles
+
 echo Installation of Oh My Zsh!
 sudo dnf install util-linux-user zsh git
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
