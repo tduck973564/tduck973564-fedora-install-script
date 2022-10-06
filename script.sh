@@ -10,6 +10,11 @@ echo Adding Flathub to Flatpak
 flatpak remote-delete flathub
 flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
 
+echo Speed up DNF
+sudo dnf install dnf-plugins-core -y
+sudo sh -c "echo 'max_parallel_downloads=10' >> /etc/dnf/dnf.conf"
+sudo sh -c "echo 'fastestmirror=True' >> /etc/dnf/dnf.conf"
+
 echo Installation of RPMFusion
 sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf groupupdate -y core
