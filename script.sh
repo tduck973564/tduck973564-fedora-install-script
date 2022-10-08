@@ -167,10 +167,32 @@ echo Dotfiles
 git clone https://github.com/tduck973564/dotfiles ~/.dotfiles
 echo ". ~/.dotfiles/.aliases" >> ~/.zshrc
 
-echo "Fix inconsistent GNOME 42 theming; you will need to enable the theme in tweaks"
+echo "Fix inconsistent GNOME 42 theming"
 sudo dnf copr enable nickavem/adw-gtk3 -y
 sudo dnf install adw-gtk3
 flatpak install -y org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark 
+
+echo "Install shell extensions"
+array=( https://extensions.gnome.org/extension/615/appindicator-support/
+https://extensions.gnome.org/extension/3193/blur-my-shell/
+https://extensions.gnome.org/extension/4135/espresso/ )
+
+for i in "${array[@]}"
+do
+    EXTENSION_ID=$(curl -s $i | grep -oP 'data-uuid="\K[^"]+')
+    VERSION_TAG=$(curl -Lfs "https://extensions.gnome.org/extension-query/?search=$EXTENSION_ID" | jq '.extensions[0] | .shell_version_map | map(.pk) | max')
+    wget -O ${EXTENSION_ID}.zip "https://extensions.gnome.org/download-extension/${EXTENSION_ID}.shell-extension.zip?version_tag=$VERSION_TAG"
+    gnome-extensions install --force ${EXTENSION_ID}.zip
+    if ! gnome-extensions list | grep --quiet ${EXTENSION_ID}; then
+        busctl --user call org.gnome.Shell.Extensions /org/gnome/Shell/Extensions org.gnome.Shell.Extensions InstallRemoteExtension s ${EXTENSION_ID}
+    fi
+    gnome-extensions enable ${EXTENSION_ID}
+    rm ${EXTENSION_ID}.zip
+done
+
+gnome-extensions disable background-logo@fedorahosted.org
+
+echo "Set theme settings"
 
 echo Install firefox theme
 cd ~/Repositories
