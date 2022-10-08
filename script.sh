@@ -122,7 +122,7 @@ steam \
 dconf-editor \
 wine \
 bottles \
-builder \
+gnome-builder \
 gcolor3 \
 dialect \
 inkscape \
