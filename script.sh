@@ -248,4 +248,8 @@ wget \
  https://addons.mozilla.org/firefox/downloads/file/4010387/bypass_paywalls_clean-2.8.7.0.xpi && 
 firefox *.xpi && rm *.xpi
 
+echo "Change GRUB settings"
+sudo grub2-editenv - set menu_auto_hide=1
+sudo grub2-mkconfig -o /etc/grub2-efi.cfg
+
 echo -e '\nDone!'
