@@ -127,7 +127,8 @@ gcolor3 \
 dialect \
 inkscape \
 kdenlive \
-musescore
+musescore \
+geary
 
 flatpak install -y \
 com.github.tchx84.Flatseal \
@@ -229,7 +230,7 @@ gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,m
 gsettings set org.gnome.shell had-bluetooth-devices-setup true
 
 gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Nautilus.desktop']"
-gsettings set org.gnome.shell app-picker-layout "[{'discord.desktop': <{'position': <0>}>, 'org.signal.Signal.desktop': <{'position': <1>}>, 'org.gnome.Console.desktop': <{'position': <2>}>, 'io.bassi.Amberol.desktop': <{'position': <3>}>, 'org.gnome.TextEditor.desktop': <{'position': <4>}>, 'org.gnome.Contacts.desktop': <{'position': <5>}>, 'org.gnome.Weather.desktop': <{'position': <6>}>, 'org.gnome.clocks.desktop': <{'position': <7>}>, 'org.gnome.Maps.desktop': <{'position': <8>}>, 'org.gnome.Photos.desktop': <{'position': <9>}>, 'org.gnome.Totem.desktop': <{'position': <10>}>, 'org.gnome.Calculator.desktop': <{'position': <11>}>, 'org.gnome.Cheese.desktop': <{'position': <12>}>, 'app.drey.Dialect.desktop': <{'position': <13>}>, 'org.gnome.SoundRecorder.desktop': <{'position': <14>}>, 'gnome-system-monitor.desktop': <{'position': <15>}>, '151ac8a7-14a6-431f-8e41-6c3a621957c3': <{'position': <16>}>, '4a525d00-5640-4141-af90-14b785c02b2c': <{'position': <17>}>, '746bd76a-c391-41e9-b41e-ea91cd833481': <{'position': <18>}>, '054e367e-7f3f-4682-a7cd-3f8140c11b6c': <{'position': <19>}>, '5aee2c61-06cd-4754-943e-4f876f3a7277': <{'position': <20>}>, 'Utilities': <{'position': <21>}>, 'org.gnome.Software.desktop': <{'position': <22>}>, 'org.gnome.Settings.desktop': <{'position': <23>}>}]"
+gsettings set org.gnome.shell app-picker-layout "[{'discord.desktop': <{'position': <0>}>, 'org.signal.Signal.desktop': <{'position': <1>}>, 'org.gnome.Geary.desktop': <{'position': <2>}>, 'org.gnome.Console.desktop': <{'position': <3>}>, 'io.bassi.Amberol.desktop': <{'position': <4>}>, 'org.gnome.TextEditor.desktop': <{'position': <5>}>, 'org.gnome.Contacts.desktop': <{'position': <6>}>, 'org.gnome.Weather.desktop': <{'position': <7>}>, 'org.gnome.clocks.desktop': <{'position': <8>}>, 'org.gnome.Maps.desktop': <{'position': <9>}>, 'org.gnome.Photos.desktop': <{'position': <10>}>, 'org.gnome.Totem.desktop': <{'position': <11>}>, 'org.gnome.Calculator.desktop': <{'position': <12>}>, 'org.gnome.Cheese.desktop': <{'position': <13>}>, 'app.drey.Dialect.desktop': <{'position': <14>}>, 'org.gnome.SoundRecorder.desktop': <{'position': <15>}>, '151ac8a7-14a6-431f-8e41-6c3a621957c3': <{'position': <16>}>, '4a525d00-5640-4141-af90-14b785c02b2c': <{'position': <17>}>, '746bd76a-c391-41e9-b41e-ea91cd833481': <{'position': <18>}>, '054e367e-7f3f-4682-a7cd-3f8140c11b6c': <{'position': <19>}>, '5aee2c61-06cd-4754-943e-4f876f3a7277': <{'position': <20>}>, 'Utilities': <{'position': <21>}>, 'org.gnome.Software.desktop': <{'position': <22>}>, 'org.gnome.Settings.desktop': <{'position': <23>}>}]"
 
 gsettings set org.gnome.desktop.notifications.application:/org/gnome/desktop/notifications/application/org-freedesktop-problems-applet/ enable false
 
@@ -240,9 +241,9 @@ cd firefox-gnome-theme
 ./scripts/auto-install.sh
 cd ~
 
-echo "Firefox addons"
+echo "Install firefox addons"
 wget \ 
- hhttps://addons.mozilla.org/firefox/downloads/file/4003969/ublock_origin-1.44.4.xpi \ 
+ https://addons.mozilla.org/firefox/downloads/file/4003969/ublock_origin-1.44.4.xpi \ 
  https://addons.mozilla.org/firefox/downloads/file/3974897/gnome_shell_integration-11.1.xpi \
  https://addons.mozilla.org/firefox/downloads/file/4010387/bypass_paywalls_clean-2.8.7.0.xpi && 
 firefox *.xpi && rm *.xpi
