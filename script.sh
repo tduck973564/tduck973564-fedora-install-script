@@ -198,7 +198,8 @@ gsettings set org.gnome.shell disable-extension-version-validation true
 
 array=( https://extensions.gnome.org/extension/615/appindicator-support/
 https://extensions.gnome.org/extension/3193/blur-my-shell/
-https://extensions.gnome.org/extension/4135/espresso/ )
+https://extensions.gnome.org/extension/4135/espresso/
+https://extensions.gnome.org/extension/1723/wintile-windows-10-window-tiling-for-gnome/ )
 
 for i in "${array[@]}"
 do
