@@ -30,7 +30,8 @@ com.github.alexhuntley.Plots \
 org.gnome.SoundRecorder \
 org.gnome.Solanum \
 com.github.liferooter.textpieces \
-com.github.hugolabe.Wike
+com.github.hugolabe.Wike \
+io.posidon.Paper
 
 echo "Fix inconsistent GNOME theming"
 sudo dnf copr enable nickavem/adw-gtk3 -y
