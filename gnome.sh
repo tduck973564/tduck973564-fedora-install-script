@@ -64,7 +64,6 @@ done
 gnome-extensions disable background-logo@fedorahosted.org
 
 echo "Set theme settings"
-gsettings set org.gnome.desktop.interface clock-format '12h'
 gsettings set org.gnome.desktop.interface clock-show-weekday true
 
 gsettings set org.gnome.desktop.interface document-font-name 'Inter 11'
