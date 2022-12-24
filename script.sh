@@ -161,12 +161,8 @@ echo "Dotfiles"
 git clone https://github.com/tduck973564/dotfiles ~/.dotfiles
 echo ". ~/.dotfiles/.aliases" >> ~/.zshrc
 
-echo "Install firefox addons"
-wget \ 
- https://addons.mozilla.org/firefox/downloads/file/4003969/ublock_origin-1.44.4.xpi \ 
- https://addons.mozilla.org/firefox/downloads/file/3974897/gnome_shell_integration-11.1.xpi \
- https://addons.mozilla.org/firefox/downloads/file/4010387/bypass_paywalls_clean-2.8.7.0.xpi && 
-firefox *.xpi && rm *.xpi
+echo "Install AppImageLauncher"
+sudo dnf install https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
 
 echo "Change GRUB settings"
 sudo grub2-editenv - set menu_auto_hide=1
