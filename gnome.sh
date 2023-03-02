@@ -13,7 +13,6 @@ seahorse \
 gnome-console \
 bottles \
 gnome-builder \
-gcolor3 \
 dialect \
 geary
 
@@ -32,7 +31,9 @@ org.gnome.Solanum \
 com.github.liferooter.textpieces \
 com.github.hugolabe.Wike \
 io.posidon.Paper \
-com.github.d4nj1.tlpui
+com.github.d4nj1.tlpui \
+com.github.finefindus.eyedropper \
+org.gnome.gitlab.YaLTeR.Identity
 
 echo "Fix inconsistent GNOME theming"
 sudo dnf copr enable nickavem/adw-gtk3 -y
