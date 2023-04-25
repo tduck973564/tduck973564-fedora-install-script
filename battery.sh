@@ -7,14 +7,6 @@ sudo systemctl enable --now NetworkManager-dispatcher
 
 sudo dnf install tlp tlp-rdw powertop
 
-sudo sh -c "echo 'PCIE_ASPM_ON_BAT=powersupersave
-CPU_SCALER_GOVERNOR_ON_BAT=schedutil
-PLATFORM_PROFILE_ON_BAT=low-power
-RADEON_DPM_STATE_ON_BAT=battery
-NMI_WATCHDOG=0
-CPU_BOOST_ON_BAT=0
-' >> /etc/tlp.conf"
-
 sudo systemctl enable --now tlp
 sudo tlp-rdw enable
 
