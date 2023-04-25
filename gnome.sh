@@ -1,7 +1,3 @@
-echo "Patch GNOME"
-echo "[Settings]\ngtk-hint-font-metrics=1" >> ~/.config/gtk-4.0/settings.ini
-sudo dnf copr enable calcastor/gnome-patched -y
-
 echo "Installation of GNOME Apps"
 sudo dnf remove -y \
 gnome-terminal \
