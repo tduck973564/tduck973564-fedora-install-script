@@ -11,6 +11,7 @@ sudo dnf install -y \
 gnome-tweaks \
 seahorse \
 gnome-console \
+gnome-backgrounds-extras
 
 flatpak install -y flathub \
 org.gnome.Extensions io.github.realmazharhussain.GdmSettings \
