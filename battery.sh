@@ -11,7 +11,6 @@ sudo sh -c "echo 'PCIE_ASPM_ON_BAT=powersupersave
 CPU_SCALER_GOVERNOR_ON_BAT=schedutil
 PLATFORM_PROFILE_ON_BAT=low-power
 RADEON_DPM_STATE_ON_BAT=battery
-RADEON_DPM_PERF_LEVEL_ON_BAT=low
 NMI_WATCHDOG=0
 CPU_BOOST_ON_BAT=0
 ' >> /etc/tlp.conf"
