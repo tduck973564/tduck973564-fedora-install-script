@@ -1,3 +1,6 @@
+echo "Patched mutter"
+sudo dnf copr enable calcastor/gnome-patched
+
 echo "Installation of GNOME Apps"
 sudo dnf remove -y \
 gnome-terminal \
