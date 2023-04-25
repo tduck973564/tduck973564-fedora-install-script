@@ -14,7 +14,8 @@ gnome-console \
 gnome-backgrounds-extras
 
 flatpak install -y flathub \
-org.gnome.Extensions io.github.realmazharhussain.GdmSettings \
+com.mattjakeman.ExtensionManager \ 
+io.github.realmazharhussain.GdmSettings \
 io.bassi.Amberol \
 org.gnome.World.Citations \
 com.github.huluti.Curtail \
