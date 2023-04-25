@@ -11,10 +11,6 @@ sudo dnf install -y \
 gnome-tweaks \
 seahorse \
 gnome-console \
-bottles \
-gnome-builder \
-dialect \
-geary
 
 flatpak install -y \
 org.gnome.Extensions io.github.realmazharhussain.GdmSettings \
@@ -33,7 +29,11 @@ com.github.hugolabe.Wike \
 io.posidon.Paper \
 com.github.d4nj1.tlpui \
 com.github.finefindus.eyedropper \
-org.gnome.gitlab.YaLTeR.Identity
+org.gnome.gitlab.YaLTeR.Identity \
+com.usebottles.bottles \
+app.drey.Dialect \
+org.gnome.Geary \
+org.gnome.Builder
 
 echo "Fix inconsistent GNOME theming"
 sudo dnf copr enable nickavem/adw-gtk3 -y
