@@ -5,10 +5,6 @@
 echo "CD into home directory"
 cd ~
 
-echo "Adding Flathub to Flatpak"
-flatpak remote-delete flathub
-flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
-
 echo "Speed up DNF"
 sudo dnf install dnf-plugins-core -y
 sudo sh -c "echo 'max_parallel_downloads=10' >> /etc/dnf/dnf.conf"
@@ -22,12 +18,8 @@ sudo dnf groupupdate -y multimedia --setop="install_weak_deps=False"
 echo "Update system before continuing"
 sudo dnf --refresh upgrade -y
 
-echo "Xanmod kernel"
-sudo dnf copr enable rmnscnce/kernel-xanmod -y
-sudo dnf install kernel-xanmod-edge -y
-
 echo "Install wine"
-sudo dnf install wine winetricks bottles
+sudo dnf install wine winetricks
 
 echo "Installation of Oh My Zsh!"
 sudo dnf install util-linux-user zsh git
@@ -49,9 +41,7 @@ git config --global user.name $GITUSERNAME
 git config --global user.email  $GITEMAIL
 
 echo "Installation of VSCode"
-sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-sudo dnf install -y code
+flatpak install -y flathub com.visualstudio.code
 
 echo "Installation of Rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable --profile default -y
@@ -105,22 +95,20 @@ sudo dnf remove -y \
 fedora-bookmarks
 
 sudo dnf install -y \
-discord \
 ffmpeg \
-easyeffects \
 firewall-config \
-steam \
 dconf-editor \
-wine \
-inkscape \
-kdenlive \
-musescore
 
-flatpak install -y \
+flatpak install -y flathub \
 com.github.tchx84.Flatseal \
 org.gimp.GIMP \
-net.pcsx2.PCSX2 \
-org.signal.Signal
+org.signal.Signal \
+com.discordapp.Discord \
+org.musescore.MuseScore \
+org.kde.kdenlive \
+org.inkscape.Inkscape \
+com.github.wwmm.easyeffects
+
 
 echo "Log into accounts on web browser"
 firefox https://accounts.google.com/
@@ -132,15 +120,6 @@ echo "Make some folders"
 mkdir ~/Repositories
 mkdir ~/Coding
 mkdir ~/Games
-
-echo "Set up SSH and enable firewall to block all except on port 22"
-sudo systemctl enable --now sshd
-sudo systemctl enable --now firewalld
-for i in $( ifconfig -a | sed 's/[ \t].*//;/^\(lo\|\)$/d' ); do
-    sudo firewall-cmd --zone=block --change-interface=$i
-    echo Added $i to block zone
-done
-sudo firewall-cmd --permanent --add-service=ssh
 
 echo "Install nvidia drivers if nvidia gpu is installed"
 if [[ $(lspci) = *NVIDIA* ]]; then
