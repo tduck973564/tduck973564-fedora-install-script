@@ -46,9 +46,8 @@ echo "Install shell extensions"
 gsettings set org.gnome.shell disable-extension-version-validation true
 
 array=( https://extensions.gnome.org/extension/3193/blur-my-shell/
-https://extensions.gnome.org/extension/4135/espresso/
-https://extensions.gnome.org/extension/1723/wintile-windows-10-window-tiling-for-gnome/
-https://extensions.gnome.org/extension/5237/rounded-window-corners/ )
+https://extensions.gnome.org/extension/5237/rounded-window-corners/ 
+https://extensions.gnome.org/extension/5446/quick-settings-tweaker/ )
 
 for i in "${array[@]}"
 do
