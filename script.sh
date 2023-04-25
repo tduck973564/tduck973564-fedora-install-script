@@ -19,10 +19,10 @@ echo "Update system before continuing"
 sudo dnf --refresh upgrade -y
 
 echo "Install wine"
-sudo dnf install wine winetricks
+sudo dnf install -y wine winetricks
 
 echo "Installation of Oh My Zsh!"
-sudo dnf install util-linux-user zsh git
+sudo dnf install-y util-linux-user zsh git
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
 chsh -s /usr/bin/zsh
 sed -e s/robbyrussell/lukerandall/ ~/.zshrc > ~/.zshrc.tmp && mv ~/.zshrc.tmp ~/.zshrc
@@ -47,13 +47,13 @@ echo "Installation of Rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable --profile default -y
 
 echo "Installation of Python"
-sudo dnf install python pip
+sudo dnf install -y python pip
 pip install --upgrade pip
 pip install pylint
 curl -sSL https://install.python-poetry.org | python3 -
 
 echo "Installation of TypeScript and JavaScript"
-sudo dnf install nodejs
+sudo dnf install -y nodejs
 sudo npm install -g typescript npm
 
 echo "Installation of Java"
@@ -141,7 +141,7 @@ git clone https://github.com/tduck973564/dotfiles ~/.dotfiles
 echo ". ~/.dotfiles/.aliases" >> ~/.zshrc
 
 echo "Install AppImageLauncher"
-sudo dnf install https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
+sudo dnf install -y https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
 
 echo "Change GRUB settings"
 sudo grub2-editenv - set menu_auto_hide=1
