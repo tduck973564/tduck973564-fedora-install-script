@@ -36,13 +36,13 @@ org.gnome.Builder
 echo "Fix inconsistent GNOME theming"
 sudo dnf copr enable nickavem/adw-gtk3 -y
 sudo dnf install adw-gtk3
-flatpak install -y flathub org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark 
+flatpak install -y flathub org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
+flatpak install -y fedora org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
 
 echo "Install shell extensions"
 gsettings set org.gnome.shell disable-extension-version-validation true
 
-array=( https://extensions.gnome.org/extension/3193/blur-my-shell/
-https://extensions.gnome.org/extension/5237/rounded-window-corners/ )
+array=( https://extensions.gnome.org/extension/5237/rounded-window-corners/ )
 
 for i in "${array[@]}"
 do

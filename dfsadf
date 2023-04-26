@@ -1,0 +1,20 @@
+[1mdiff --git a/gnome.sh b/gnome.sh[m
+[1mindex 1af8011..207dccb 100644[m
+[1m--- a/gnome.sh[m
+[1m+++ b/gnome.sh[m
+[36m@@ -36,13 +36,12 @@[m [morg.gnome.Builder[m
+ echo "Fix inconsistent GNOME theming"[m
+ sudo dnf copr enable nickavem/adw-gtk3 -y[m
+ sudo dnf install adw-gtk3[m
+[31m-flatpak install -y flathub org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark [m
+[32m+[m[32mflatpak install -y flathub org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark[m
+ [m
+ echo "Install shell extensions"[m
+ gsettings set org.gnome.shell disable-extension-version-validation true[m
+ [m
+[31m-array=( https://extensions.gnome.org/extension/3193/blur-my-shell/[m
+[31m-https://extensions.gnome.org/extension/5237/rounded-window-corners/ )[m
+[32m+[m[32marray=( https://extensions.gnome.org/extension/5237/rounded-window-corners/ )[m
+ [m
+ for i in "${array[@]}"[m
+ do[m
