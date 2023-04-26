@@ -37,7 +37,6 @@ echo "Fix inconsistent GNOME theming"
 sudo dnf copr enable nickavem/adw-gtk3 -y
 sudo dnf install adw-gtk3
 flatpak install -y flathub org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
-flatpak install -y fedora org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
 
 echo "Install shell extensions"
 gsettings set org.gnome.shell disable-extension-version-validation true
@@ -73,7 +72,7 @@ gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 
 gsettings set org.gnome.shell had-bluetooth-devices-setup true
 
-gsettings set org.gnome.software packaging-format-preference "['flatpak:fedora-testing', 'flatpak:fedora', 'flatpak:flathub', 'rpm']"
+gsettings set org.gnome.software packaging-format-preference "['flatpak:flathub', 'rpm', 'flatpak:fedora-testing', 'flatpak:fedora']"
 
 gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Console.desktop']"
 
