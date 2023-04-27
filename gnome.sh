@@ -10,7 +10,7 @@ gnome-console \
 gnome-backgrounds-extras
 
 flatpak install -y flathub \
-com.mattjakeman.ExtensionManager \ 
+com.mattjakeman.ExtensionManager \
 io.github.realmazharhussain.GdmSettings \
 io.bassi.Amberol \
 org.gnome.World.Citations \
@@ -31,11 +31,12 @@ org.gnome.gitlab.YaLTeR.Identity \
 com.usebottles.bottles \
 app.drey.Dialect \
 org.gnome.Geary \
-org.gnome.Builder
+org.gnome.Builder \
+com.github.maoschanz.drawing
 
 echo "Fix inconsistent GNOME theming"
 sudo dnf copr enable nickavem/adw-gtk3 -y
-sudo dnf install adw-gtk3
+sudo dnf install -y adw-gtk3
 flatpak install -y flathub org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
 
 echo "Install shell extensions"

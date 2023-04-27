@@ -1,0 +1,48 @@
+[1mdiff --git a/battery.sh b/battery.sh[m
+[1mold mode 100644[m
+[1mnew mode 100755[m
+[1mdiff --git a/gnome.sh b/gnome.sh[m
+[1mold mode 100644[m
+[1mnew mode 100755[m
+[1mindex b763eeb..f69e99b[m
+[1m--- a/gnome.sh[m
+[1m+++ b/gnome.sh[m
+[36m@@ -10,7 +10,7 @@[m [mgnome-console \[m
+ gnome-backgrounds-extras[m
+ [m
+ flatpak install -y flathub \[m
+[31m-com.mattjakeman.ExtensionManager \ [m
+[32m+[m[32mcom.mattjakeman.ExtensionManager \[m
+ io.github.realmazharhussain.GdmSettings \[m
+ io.bassi.Amberol \[m
+ org.gnome.World.Citations \[m
+[36m@@ -31,11 +31,12 @@[m [morg.gnome.gitlab.YaLTeR.Identity \[m
+ com.usebottles.bottles \[m
+ app.drey.Dialect \[m
+ org.gnome.Geary \[m
+[31m-org.gnome.Builder[m
+[32m+[m[32morg.gnome.Builder \[m
+[32m+[m[32mcom.github.maoschanz.drawing[m
+ [m
+ echo "Fix inconsistent GNOME theming"[m
+ sudo dnf copr enable nickavem/adw-gtk3 -y[m
+[31m-sudo dnf install adw-gtk3[m
+[32m+[m[32msudo dnf install -y adw-gtk3[m
+ flatpak install -y flathub org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark[m
+ [m
+ echo "Install shell extensions"[m
+[1mdiff --git a/script.sh b/script.sh[m
+[1mold mode 100644[m
+[1mnew mode 100755[m
+[1mindex 9c88fd5..316e665[m
+[1m--- a/script.sh[m
+[1m+++ b/script.sh[m
+[36m@@ -24,7 +24,7 @@[m [mecho "Install wine"[m
+ sudo dnf install -y wine winetricks[m
+ [m
+ echo "Installation of Oh My Zsh!"[m
+[31m-sudo dnf install-y util-linux-user zsh git[m
+[32m+[m[32msudo dnf install -y util-linux-user zsh git[m
+ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"[m
+ chsh -s /usr/bin/zsh[m
+ sed -e s/robbyrussell/lukerandall/ ~/.zshrc > ~/.zshrc.tmp && mv ~/.zshrc.tmp ~/.zshrc[m
