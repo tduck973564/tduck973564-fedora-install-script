@@ -32,7 +32,8 @@ com.usebottles.bottles \
 app.drey.Dialect \
 org.gnome.Geary \
 org.gnome.Builder \
-com.github.maoschanz.drawing
+com.github.maoschanz.drawing \
+ca.desrt.dconf-editor
 
 echo "Fix inconsistent GNOME theming"
 sudo dnf copr enable nickavem/adw-gtk3 -y
