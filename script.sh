@@ -24,7 +24,7 @@ echo "Install wine"
 sudo dnf install -y wine winetricks
 
 echo "Installation of Oh My Zsh!"
-sudo dnf install-y util-linux-user zsh git
+sudo dnf install -y util-linux-user zsh git
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
 chsh -s /usr/bin/zsh
 sed -e s/robbyrussell/lukerandall/ ~/.zshrc > ~/.zshrc.tmp && mv ~/.zshrc.tmp ~/.zshrc
