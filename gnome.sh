@@ -16,7 +16,6 @@ io.bassi.Amberol \
 org.gnome.World.Citations \
 com.github.huluti.Curtail \
 com.belmoussaoui.Decoder \
-dev.Cogitri.Health \
 com.adrienplazas.Metronome \
 io.github.seadve.Mousai \
 com.github.alexhuntley.Plots \
