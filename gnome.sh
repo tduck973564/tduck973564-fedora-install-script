@@ -59,6 +59,10 @@ done
 
 gnome-extensions disable background-logo@fedorahosted.org
 
+echo "Fractional scaling"
+gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+gsettings set org.gnome.mutter experimental-features "['x11-randr-fractional-scaling']"
+
 echo "Set theme settings"
 gsettings set org.gnome.desktop.interface clock-show-weekday true
 
