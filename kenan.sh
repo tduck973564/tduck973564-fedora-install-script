@@ -35,11 +35,10 @@ fedora-bookmarks
 sudo dnf install -y \
 ffmpeg \
 firewall-config \
-dconf-editor \
+discord
 
 flatpak install -y flathub \
 com.github.tchx84.Flatseal \
-com.discordapp.Discord \
 org.musescore.MuseScore \
 com.github.wwmm.easyeffects
 
