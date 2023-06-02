@@ -30,12 +30,14 @@ echo "setopt NO_NOMATCH" >> ~/.zshrc
 
 echo "Installation of apps"
 sudo dnf remove -y \
-fedora-bookmarks
+fedora-bookmarks \
+mediawriter
 
 sudo dnf install -y \
 ffmpeg \
 firewall-config \
-discord
+discord \
+pavucontrol
 
 flatpak install -y flathub \
 com.github.tchx84.Flatseal \
