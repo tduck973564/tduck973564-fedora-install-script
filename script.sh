@@ -112,6 +112,18 @@ org.kde.kdenlive \
 org.inkscape.Inkscape \
 com.github.wwmm.easyeffects
 
+sudo sh -c "echo \"[Desktop Entry]
+Name=Discord
+StartupWMClass=discord
+Comment=All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone.
+GenericName=Internet Messenger
+Exec=/usr/bin/Discord --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto
+Icon=discord
+Type=Application
+Categories=Network;InstantMessaging;
+Path=/usr/bin
+X-Desktop-File-Install-Version=0.26\" > /usr/share/applications/discord.desktop"
+
 echo "Make some folders"
 mkdir ~/Repositories
 mkdir ~/Coding
