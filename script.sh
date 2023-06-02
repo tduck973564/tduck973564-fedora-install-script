@@ -118,8 +118,14 @@ mkdir ~/Coding
 
 echo "Install nvidia drivers if nvidia gpu is installed"
 if [[ $(lspci) = *NVIDIA* ]]; then
-  sudo dnf install -y akmod-nvidia xorg-x11-drv-nvidia-cuda
-  echo "Wait 5 minutes before restarting to make sure the module is built"
+sudo dnf install -y akmod-nvidia xorg-x11-drv-nvidia-cuda
+sudo akmods
+cat <<EOF | sudo tee /etc/modprobe.d/blacklist-nouveau.conf
+blacklist nouveau
+options nouveau modeset=0
+EOF
+sudo dracut --regenerate-all --force
+flatpak update
 fi
 
 echo "Install OneDrive"
