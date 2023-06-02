@@ -1,4 +1,62 @@
-#!/bin/bash
+#!/usr/bin/bash
+
+# Fedora Install Script by tduck973564
+# for kenan
+
+echo "CD into home directory"
+cd ~
+
+echo "Speed up DNF"
+sudo dnf install dnf-plugins-core -y
+sudo echo 'fastestmirror=True' | sudo tee -a /etc/dnf/dnf.conf
+sudo echo 'max_parallel_downloads=10' | sudo tee -a /etc/dnf/dnf.conf
+sudo echo 'deltarpm=true' | sudo tee -a /etc/dnf/dnf.conf
+sudo echo 'countme=false' | sudo tee -a /etc/dnf/dnf.conf
+
+echo "Installation of RPMFusion"
+sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf groupupdate -y core
+sudo dnf groupupdate -y multimedia --setop="install_weak_deps=False"
+
+echo "Update system before continuing"
+sudo dnf --refresh upgrade -y
+
+echo "Installation of Oh My Zsh!"
+sudo dnf install -y util-linux-user zsh git
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
+chsh -s /usr/bin/zsh
+sed -e s/robbyrussell/lukerandall/ ~/.zshrc > ~/.zshrc.tmp && mv ~/.zshrc.tmp ~/.zshrc
+echo "setopt NO_NOMATCH" >> ~/.zshrc
+
+echo "Installation of apps"
+sudo dnf remove -y \
+fedora-bookmarks
+
+sudo dnf install -y \
+ffmpeg \
+firewall-config \
+dconf-editor \
+
+flatpak install -y flathub \
+com.github.tchx84.Flatseal \
+com.discordapp.Discord \
+org.musescore.MuseScore \
+com.github.wwmm.easyeffects
+
+echo "Install onedrive"
+sudo dnf install -y onedrive
+echo "#########\nYou will need to enable OneDrive later\n#########"
+
+echo "Download icon theme and fonts"
+sudo dnf install -y ibm-plex-fonts-all rsms-inter-fonts
+
+echo "Dotfiles"
+git clone https://github.com/tduck973564/dotfiles ~/.dotfiles
+echo ". ~/.dotfiles/.aliases" >> ~/.zshrc
+
+echo "Install AppImageLauncher"
+sudo dnf install -y https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
+
 echo "Installation of GNOME Apps"
 sudo dnf remove -y \
 gnome-terminal \
@@ -14,7 +72,6 @@ flatpak install -y flathub \
 com.mattjakeman.ExtensionManager \
 io.github.realmazharhussain.GdmSettings \
 io.bassi.Amberol \
-org.gnome.World.Citations \
 com.github.huluti.Curtail \
 com.belmoussaoui.Decoder \
 com.adrienplazas.Metronome \
@@ -27,10 +84,8 @@ com.github.hugolabe.Wike \
 io.posidon.Paper \
 com.github.finefindus.eyedropper \
 org.gnome.gitlab.YaLTeR.Identity \
-com.usebottles.bottles \
 app.drey.Dialect \
 org.gnome.Geary \
-org.gnome.Builder \
 com.github.maoschanz.drawing \
 ca.desrt.dconf-editor
 
@@ -82,8 +137,37 @@ gsettings set org.gnome.software packaging-format-preference "['flatpak:flathub'
 gsettings set org.gnome.desktop.notifications.application:/org/gnome/desktop/notifications/application/org-freedesktop-problems-applet/ enable false
 
 echo "Install firefox theme"
-cd ~/Repositories
 git clone https://github.com/rafaelmardojai/firefox-gnome-theme
 cd firefox-gnome-theme
 ./scripts/auto-install.sh
 cd ~
+
+echo "Battery optimisation"
+sudo dnf remove power-profiles-daemon
+
+sudo systemctl mask systemd-rfkill.service
+sudo systemctl mask systemd-rfkill.socket
+sudo systemctl enable --now NetworkManager-dispatcher
+
+sudo dnf install tlp tlp-rdw powertop
+
+sudo sh -c "echo 'PCIE_ASPM_ON_BAT=powersupersave
+PLATFORM_PROFILE_ON_BAT=low-power
+NMI_WATCHDOG=0
+CPU_PERF_POLICY_ON_BAT=power
+DEVICES_TO_DISABLE_ON_STARTUP=\"bluetooth nfc wwan\"
+DEVICES_TO_ENABLE_ON_STARTUP=\"wifi\"
+RADEON_DPM_PERF_LEVEL_ON_BAT=auto
+RADEON_DPM_STATE_ON_BAT=battery
+CPU_SCALING_GOVERNOR_ON_BAT=schedutil
+CPU_BOOST_ON_BAT=0
+' >> /etc/tlp.conf"
+
+sudo systemctl enable --now tlp
+sudo tlp-rdw enable
+
+sudo powertop --auto-tune
+sudo systemctl enable --now powertop
+
+echo "Cleanup"
+rm -rf firefox-gnome-theme

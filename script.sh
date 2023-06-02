@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # Fedora Install Script by tduck973564
 
@@ -95,12 +95,12 @@ code --install-extension llvm-vs-code-extensions.vscode-clangd
 echo "Installation of apps"
 
 sudo dnf remove -y \
-fedora-bookmarks
+fedora-bookmarks \
+mediawriter
 
 sudo dnf install -y \
 ffmpeg \
 firewall-config \
-dconf-editor \
 
 flatpak install -y flathub \
 com.github.tchx84.Flatseal \
@@ -112,17 +112,9 @@ org.kde.kdenlive \
 org.inkscape.Inkscape \
 com.github.wwmm.easyeffects
 
-
-echo "Log into accounts on web browser"
-firefox https://accounts.google.com/
-firefox https://login.microsoftonline.com/
-firefox https://discord.com/app
-firefox https://github.com/login
-
 echo "Make some folders"
 mkdir ~/Repositories
 mkdir ~/Coding
-mkdir ~/Games
 
 echo "Install nvidia drivers if nvidia gpu is installed"
 if [[ $(lspci) = *NVIDIA* ]]; then
@@ -130,14 +122,14 @@ if [[ $(lspci) = *NVIDIA* ]]; then
   echo "Wait 5 minutes before restarting to make sure the module is built"
 fi
 
-echo "Install onedrive"
+echo "Install OneDrive"
 sudo dnf install -y onedrive
 onedrive
 systemctl --user enable onedrive
 systemctl --user start onedrive
 
 echo "Download icon theme and fonts"
-sudo dnf install -y papirus-icon-theme fira-code-fonts google-roboto-fonts ibm-plex-fonts-all rsms-inter-fonts
+sudo dnf install -y ibm-plex-fonts-all rsms-inter-fonts
 
 echo "Dotfiles"
 git clone https://github.com/tduck973564/dotfiles ~/.dotfiles
@@ -145,9 +137,5 @@ echo ". ~/.dotfiles/.aliases" >> ~/.zshrc
 
 echo "Install AppImageLauncher"
 sudo dnf install -y https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
-
-echo "Change GRUB settings"
-sudo grub2-editenv - set menu_auto_hide=1
-sudo grub2-mkconfig -o /etc/grub2-efi.cfg
 
 echo -e '\nDone!'

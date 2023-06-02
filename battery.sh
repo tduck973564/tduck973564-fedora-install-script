@@ -1,3 +1,4 @@
+#!/bin/bash
 # Optimizes battery
 sudo dnf remove power-profiles-daemon
 
