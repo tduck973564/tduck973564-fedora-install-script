@@ -80,7 +80,7 @@ gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 
 gsettings set org.gnome.shell had-bluetooth-devices-setup true
 
-gsettings set org.gnome.software packaging-format-preference "['flatpak:flathub', 'rpm', 'flatpak:fedora-testing', 'flatpak:fedora']"
+gsettings set org.gnome.software packaging-format-preference "['flatpak:flathub', 'flatpak:fedora-testing', 'flatpak:fedora', 'rpm']"
 
 gsettings set org.gnome.desktop.notifications.application:/org/gnome/desktop/notifications/application/org-freedesktop-problems-applet/ enable false
 
