@@ -101,7 +101,8 @@ org.gnome.Geary \
 com.github.maoschanz.drawing \
 ca.desrt.dconf-editor \
 com.github.unrud.VideoDownloader \
-org.gnome.Loupe
+org.gnome.Loupe \
+org.gnome.Firmware
 
 echo "Fix inconsistent GNOME theming"
 sudo dnf copr enable nickavem/adw-gtk3 -y
