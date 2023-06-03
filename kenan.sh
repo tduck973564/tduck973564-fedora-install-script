@@ -89,7 +89,6 @@ io.bassi.Amberol \
 com.github.huluti.Curtail \
 com.belmoussaoui.Decoder \
 com.adrienplazas.Metronome \
-io.github.seadve.Mousai \
 com.github.alexhuntley.Plots \
 org.gnome.SoundRecorder \
 org.gnome.Solanum \
@@ -97,7 +96,6 @@ com.github.liferooter.textpieces \
 com.github.hugolabe.Wike \
 io.posidon.Paper \
 com.github.finefindus.eyedropper \
-org.gnome.gitlab.YaLTeR.Identity \
 app.drey.Dialect \
 org.gnome.Geary \
 com.github.maoschanz.drawing \
