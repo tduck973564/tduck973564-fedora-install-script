@@ -110,7 +110,7 @@ flatpak install -y flathub org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3
 echo "Install shell extensions"
 gsettings set org.gnome.shell disable-extension-version-validation true
 
-array=( https://extensions.gnome.org/extension/5237/rounded-window-corners/ )
+array=( https://extensions.gnome.org/extension/5237/rounded-window-corners/ https://extensions.gnome.org//extension/3733/tiling-assistant/ )
 
 for i in "${array[@]}"
 do
@@ -126,6 +126,8 @@ do
 done
 
 gnome-extensions disable background-logo@fedorahosted.org
+gnome-extensions enable rounded-window-corners@yilozt
+gnome-extensions enable tiling-assistant@leleat-on-github
 
 echo "Fractional scaling"
 gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
