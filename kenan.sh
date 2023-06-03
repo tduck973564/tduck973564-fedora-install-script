@@ -73,7 +73,8 @@ sudo dnf install -y https://github.com/TheAssassin/AppImageLauncher/releases/dow
 echo "Installation of GNOME Apps"
 sudo dnf remove -y \
 gnome-terminal \
-rhythmbox
+rhythmbox \
+eog
 
 sudo dnf install -y \
 gnome-tweaks \
@@ -101,7 +102,8 @@ app.drey.Dialect \
 org.gnome.Geary \
 com.github.maoschanz.drawing \
 ca.desrt.dconf-editor \
-com.github.unrud.VideoDownloader
+com.github.unrud.VideoDownloader \
+org.gnome.Loupe
 
 echo "Fix inconsistent GNOME theming"
 sudo dnf copr enable nickavem/adw-gtk3 -y
