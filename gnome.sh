@@ -15,7 +15,6 @@ flatpak install -y flathub \
 com.mattjakeman.ExtensionManager \
 io.github.realmazharhussain.GdmSettings \
 io.bassi.Amberol \
-org.gnome.World.Citations \
 com.github.huluti.Curtail \
 com.belmoussaoui.Decoder \
 com.adrienplazas.Metronome \
