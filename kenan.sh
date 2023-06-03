@@ -100,7 +100,8 @@ org.gnome.gitlab.YaLTeR.Identity \
 app.drey.Dialect \
 org.gnome.Geary \
 com.github.maoschanz.drawing \
-ca.desrt.dconf-editor
+ca.desrt.dconf-editor \
+com.github.unrud.VideoDownloader
 
 echo "Fix inconsistent GNOME theming"
 sudo dnf copr enable nickavem/adw-gtk3 -y
