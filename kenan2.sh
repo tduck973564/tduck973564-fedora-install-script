@@ -51,7 +51,8 @@ X-Desktop-File-Install-Version=0.26\" > /usr/share/applications/discord.desktop
 echo \"Installation of GNOME Apps\"
 dnf remove -y \
 gnome-terminal \
-rhythmbox
+rhythmbox \
+eog
 
 dnf install -y \
 gnome-tweaks \
