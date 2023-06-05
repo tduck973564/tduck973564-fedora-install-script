@@ -64,10 +64,6 @@ echo "#########\nYou will need to enable OneDrive later\n#########"
 echo "Download icon theme and fonts"
 sudo dnf install -y ibm-plex-fonts-all rsms-inter-fonts
 
-echo "Dotfiles"
-git clone https://github.com/tduck973564/dotfiles ~/.dotfiles
-echo ". ~/.dotfiles/.aliases" >> ~/.zshrc
-
 echo "Install AppImageLauncher"
 sudo dnf install -y https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
 
