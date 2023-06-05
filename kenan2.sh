@@ -34,7 +34,8 @@ dnf install -y \
 ffmpeg \
 firewall-config \
 discord \
-pavucontrol
+pavucontrol \
+openssl
 
 echo \"[Desktop Entry]
 Name=Discord
