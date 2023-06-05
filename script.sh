@@ -20,9 +20,6 @@ sudo dnf groupupdate -y multimedia --setop="install_weak_deps=False"
 echo "Update system before continuing"
 sudo dnf --refresh upgrade -y
 
-echo "Install wine"
-sudo dnf install -y wine winetricks
-
 echo "Installation of Oh My Zsh!"
 sudo dnf install -y util-linux-user zsh git
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
