@@ -114,7 +114,6 @@ io.bassi.Amberol \
 com.github.huluti.Curtail \
 com.belmoussaoui.Decoder \
 com.adrienplazas.Metronome \
-io.github.seadve.Mousai \
 com.github.alexhuntley.Plots \
 org.gnome.SoundRecorder \
 org.gnome.Solanum \
@@ -122,11 +121,13 @@ com.github.liferooter.textpieces \
 com.github.hugolabe.Wike \
 io.posidon.Paper \
 com.github.finefindus.eyedropper \
-org.gnome.gitlab.YaLTeR.Identity \
 app.drey.Dialect \
 org.gnome.Geary \
 com.github.maoschanz.drawing \
-ca.desrt.dconf-editor
+ca.desrt.dconf-editor \
+com.github.unrud.VideoDownloader \
+org.gnome.Loupe \
+org.gnome.Firmware
 
 echo "Fix inconsistent GNOME theming"
 flatpak install -y flathub org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
