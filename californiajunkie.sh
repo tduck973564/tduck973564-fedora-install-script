@@ -1,46 +1,43 @@
 #!/usr/bin/bash
 
 # Fedora Install Script by tduck973564
-# for kenan
+# for the greatest californian
 
 echo "CD into home directory"
 cd ~
 
-echo "Speed up DNF"
-sudo dnf install dnf-plugins-core -y
-sudo echo 'fastestmirror=True' | sudo tee -a /etc/dnf/dnf.conf
-sudo echo 'max_parallel_downloads=10' | sudo tee -a /etc/dnf/dnf.conf
-sudo echo 'deltarpm=true' | sudo tee -a /etc/dnf/dnf.conf
-sudo echo 'countme=false' | sudo tee -a /etc/dnf/dnf.conf
+pkexec bash -c "
+echo \"Speed up DNF\"
+dnf install dnf-plugins-core -y
+echo 'fastestmirror=True' | tee -a /etc/dnf/dnf.conf
+echo 'max_parallel_downloads=10' | tee -a /etc/dnf/dnf.conf
+echo 'deltarpm=true' | tee -a /etc/dnf/dnf.conf
+echo 'countme=false' | tee -a /etc/dnf/dnf.conf
 
-echo "Installation of RPMFusion"
-sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf groupupdate -y core
-sudo dnf groupupdate -y multimedia --setop="install_weak_deps=False"
-sudo dnf install -y ffmpeg --allowerasing
+echo \"Install RPMFusion\"
+dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+dnf groupupdate -y core
+dnf groupupdate -y multimedia --setop=\"install_weak_deps=False\"
+dnf install -y ffmpeg --allowerasing
 
-echo "Update system before continuing"
-sudo dnf --refresh upgrade -y
+echo \"Update system before continuing\"
+dnf --refresh upgrade -y
 
-echo "Installation of Oh My Zsh!"
-sudo dnf install -y util-linux-user zsh git
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
-chsh -s /usr/bin/zsh
-sed -e s/robbyrussell/lukerandall/ ~/.zshrc > ~/.zshrc.tmp && mv ~/.zshrc.tmp ~/.zshrc
-echo "setopt NO_NOMATCH" >> ~/.zshrc
+echo \"Installation of zsh\"
+dnf install -y util-linux-user zsh git
 
-echo "Installation of apps"
-sudo dnf remove -y \
+echo \"Installation of apps\"
+dnf remove -y \
 fedora-bookmarks \
 mediawriter
 
-sudo dnf install -y \
+dnf install -y \
 firewall-config \
 discord \
 pavucontrol \
 openssl
 
-sudo sh -c "echo \"[Desktop Entry]
+echo \"[Desktop Entry]
 Name=Discord
 StartupWMClass=discord
 Comment=All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone.
@@ -50,34 +47,63 @@ Icon=discord
 Type=Application
 Categories=Network;InstantMessaging;
 Path=/usr/bin
-X-Desktop-File-Install-Version=0.26\" > /usr/share/applications/discord.desktop"
+X-Desktop-File-Install-Version=0.26\" > /usr/share/applications/discord.desktop
 
-flatpak install -y flathub \
-com.github.tchx84.Flatseal \
-org.musescore.MuseScore \
-com.github.wwmm.easyeffects
-
-echo "Install onedrive"
-sudo dnf install -y onedrive
-echo "#########\nYou will need to enable OneDrive later\n#########"
-
-echo "Download icon theme and fonts"
-sudo dnf install -y ibm-plex-fonts-all rsms-inter-fonts
-
-echo "Install AppImageLauncher"
-sudo dnf install -y https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
-
-echo "Installation of GNOME Apps"
-sudo dnf remove -y \
+echo \"Installation of GNOME Apps\"
+dnf remove -y \
 gnome-terminal \
 rhythmbox \
 eog
 
-sudo dnf install -y \
+dnf install -y \
 gnome-tweaks \
 seahorse \
 gnome-console \
 gnome-backgrounds-extras
+
+echo \"Download icon theme and fonts\"
+dnf install -y ibm-plex-fonts-all rsms-inter-fonts
+
+echo \"Install AppImageLauncher\"
+dnf install -y https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
+
+echo \"Fix inconsistent GNOME theming\"
+dnf copr enable nickavem/adw-gtk3 -y
+dnf install -y adw-gtk3
+
+echo \"Battery optimisation\"
+dnf remove power-profiles-daemon
+
+systemctl mask systemd-rfkill.service
+systemctl mask systemd-rfkill.socket
+systemctl enable --now NetworkManager-dispatcher
+
+dnf install tlp tlp-rdw powertop
+
+echo 'PCIE_ASPM_ON_BAT=powersupersave
+PLATFORM_PROFILE_ON_BAT=low-power
+NMI_WATCHDOG=0
+CPU_PERF_POLICY_ON_BAT=power
+DEVICES_TO_DISABLE_ON_STARTUP=\"bluetooth nfc wwan\"
+DEVICES_TO_ENABLE_ON_STARTUP=\"wifi\"
+CPU_SCALING_GOVERNOR_ON_BAT=schedutil
+CPU_BOOST_ON_BAT=0
+' >> /etc/tlp.conf
+
+systemctl enable --now tlp
+tlp-rdw enable
+
+powertop --auto-tune
+systemctl enable --now powertop
+
+echo \"Raise vm.max_map_count\"
+echo 'vm.max_map_count=2147483642' >> /etc/sysctl.conf
+"
+
+echo "Install flatpaks"
+flatpak install -y flathub \
+com.github.tchx84.Flatseal \
+com.github.wwmm.easyeffects
 
 flatpak install -y flathub \
 com.mattjakeman.ExtensionManager \
@@ -85,7 +111,6 @@ io.github.realmazharhussain.GdmSettings \
 io.bassi.Amberol \
 com.github.huluti.Curtail \
 com.belmoussaoui.Decoder \
-com.adrienplazas.Metronome \
 com.github.alexhuntley.Plots \
 org.gnome.SoundRecorder \
 org.gnome.Solanum \
@@ -99,12 +124,17 @@ com.github.maoschanz.drawing \
 ca.desrt.dconf-editor \
 com.github.unrud.VideoDownloader \
 org.gnome.Loupe \
-org.gnome.Firmware
+org.gnome.Firmware \
+com.usebottles.bottles
 
 echo "Fix inconsistent GNOME theming"
-sudo dnf copr enable nickavem/adw-gtk3 -y
-sudo dnf install -y adw-gtk3
 flatpak install -y flathub org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
+
+echo "Installation of Oh My Zsh!"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
+chsh -s /usr/bin/zsh
+sed -e s/robbyrussell/lukerandall/ ~/.zshrc > ~/.zshrc.tmp && mv ~/.zshrc.tmp ~/.zshrc
+echo "setopt NO_NOMATCH" >> ~/.zshrc
 
 echo "Install shell extensions"
 gsettings set org.gnome.shell disable-extension-version-validation true
@@ -128,9 +158,9 @@ gnome-extensions disable background-logo@fedorahosted.org
 gnome-extensions enable rounded-window-corners@yilozt
 gnome-extensions enable tiling-assistant@leleat-on-github
 
-echo "Fractional scaling"
-gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
-gsettings set org.gnome.mutter experimental-features "['x11-randr-fractional-scaling']"
+#echo "Fractional scaling"
+#gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+#gsettings set org.gnome.mutter experimental-features "['x11-randr-fractional-scaling']"
 
 echo "Set theme settings"
 gsettings set org.gnome.desktop.interface clock-show-weekday true
@@ -155,33 +185,6 @@ git clone https://github.com/rafaelmardojai/firefox-gnome-theme
 cd firefox-gnome-theme
 ./scripts/auto-install.sh
 cd ~
-
-echo "Battery optimisation"
-sudo dnf remove power-profiles-daemon
-
-sudo systemctl mask systemd-rfkill.service
-sudo systemctl mask systemd-rfkill.socket
-sudo systemctl enable --now NetworkManager-dispatcher
-
-sudo dnf install tlp tlp-rdw powertop
-
-sudo sh -c "echo 'PCIE_ASPM_ON_BAT=powersupersave
-PLATFORM_PROFILE_ON_BAT=low-power
-NMI_WATCHDOG=0
-CPU_PERF_POLICY_ON_BAT=power
-DEVICES_TO_DISABLE_ON_STARTUP=\"bluetooth nfc wwan\"
-DEVICES_TO_ENABLE_ON_STARTUP=\"wifi\"
-RADEON_DPM_PERF_LEVEL_ON_BAT=auto
-RADEON_DPM_STATE_ON_BAT=battery
-CPU_SCALING_GOVERNOR_ON_BAT=schedutil
-CPU_BOOST_ON_BAT=0
-' >> /etc/tlp.conf"
-
-sudo systemctl enable --now tlp
-sudo tlp-rdw enable
-
-sudo powertop --auto-tune
-sudo systemctl enable --now powertop
 
 echo "Cleanup"
 rm -rf firefox-gnome-theme

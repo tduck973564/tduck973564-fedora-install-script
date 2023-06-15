@@ -32,7 +32,6 @@ fedora-bookmarks \
 mediawriter
 
 dnf install -y \
-ffmpeg \
 firewall-config \
 discord \
 pavucontrol \

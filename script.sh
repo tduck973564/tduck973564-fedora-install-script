@@ -97,7 +97,6 @@ fedora-bookmarks \
 mediawriter
 
 sudo dnf install -y \
-ffmpeg \
 firewall-config \
 discord \
 pavucontrol \
