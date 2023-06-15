@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# Fedora Install Script by tduck973564
+# Fedora Install Script by the real fesdonomist
 # for the greatest californian
 
 echo "CD into home directory"
