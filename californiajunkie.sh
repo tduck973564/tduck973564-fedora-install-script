@@ -158,9 +158,9 @@ gnome-extensions disable background-logo@fedorahosted.org
 gnome-extensions enable rounded-window-corners@yilozt
 gnome-extensions enable tiling-assistant@leleat-on-github
 
-#echo "Fractional scaling"
-#gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
-#gsettings set org.gnome.mutter experimental-features "['x11-randr-fractional-scaling']"
+echo "Fractional scaling"
+gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+gsettings set org.gnome.mutter experimental-features "['x11-randr-fractional-scaling']"
 
 echo "Set theme settings"
 gsettings set org.gnome.desktop.interface clock-show-weekday true
