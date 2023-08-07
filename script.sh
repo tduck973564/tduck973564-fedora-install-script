@@ -21,12 +21,13 @@ sudo dnf install -y ffmpeg --allowerasing
 echo "Update system before continuing"
 sudo dnf --refresh upgrade -y
 
-echo "Installation of Oh My Zsh!"
+echo "Installation of Zim"
 sudo dnf install -y util-linux-user zsh git
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
 chsh -s /usr/bin/zsh
-sed -e s/robbyrussell/lukerandall/ ~/.zshrc > ~/.zshrc.tmp && mv ~/.zshrc.tmp ~/.zshrc
-echo "setopt NO_NOMATCH" >> ~/.zshrc
+curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+echo "setopt +o nomatch" >> ~/.zshrc
+echo "zmodule bira" >> ~/.zimrc
+zimfw install
 
 echo "Installation of GitHub CLI and setup of Git"
 sudo dnf config-manager -y --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
