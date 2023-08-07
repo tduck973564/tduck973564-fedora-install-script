@@ -30,11 +30,12 @@ com.usebottles.bottles
 echo "Fix inconsistent GNOME theming"
 flatpak install -y flathub org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
 
-echo "Installation of Oh My Zsh!"
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
+echo "Installation of Zim"
 chsh -s /usr/bin/zsh
-sed -e s/robbyrussell/lukerandall/ ~/.zshrc > ~/.zshrc.tmp && mv ~/.zshrc.tmp ~/.zshrc
-echo "setopt NO_NOMATCH" >> ~/.zshrc
+curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+echo "setopt +o nomatch" >> ~/.zshrc
+echo "zmodule bira" >> ~/.zimrc
+zimfw install
 
 echo "Install shell extensions"
 gsettings set org.gnome.shell disable-extension-version-validation true
