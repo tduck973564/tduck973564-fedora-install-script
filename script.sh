@@ -18,6 +18,9 @@ sudo dnf groupupdate -y core
 sudo dnf groupupdate -y multimedia --setop="install_weak_deps=False"
 sudo dnf install -y ffmpeg --allowerasing
 
+echo "Install Flathub"
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
 echo "Update system before continuing"
 sudo dnf --refresh upgrade -y
 
