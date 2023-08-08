@@ -64,7 +64,8 @@ echo "Installation of apps"
 
 sudo dnf remove -y \
 fedora-bookmarks \
-mediawriter
+mediawriter \
+libreoffice*
 
 sudo dnf install -y \
 firewall-config \
@@ -76,7 +77,12 @@ flatpak install -y flathub \
 com.github.tchx84.Flatseal \
 org.musescore.MuseScore \
 org.inkscape.Inkscape \
-com.github.wwmm.easyeffects
+com.github.wwmm.easyeffects \
+org.libreoffice.LibreOffice \
+org.mozilla.Thunderbird
+
+sudo flatpak override --socket=wayland org.mozilla.Thunderbird
+flatpak override --user --env=MOZ_ENABLE_WAYLAND=1 org.mozilla.Thunderbird
 
 sudo sh -c "echo \"[Desktop Entry]
 Name=Discord
