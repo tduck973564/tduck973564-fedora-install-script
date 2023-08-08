@@ -74,10 +74,7 @@ openssl
 
 flatpak install -y flathub \
 com.github.tchx84.Flatseal \
-org.gimp.GIMP \
-org.signal.Signal \
 org.musescore.MuseScore \
-org.kde.kdenlive \
 org.inkscape.Inkscape \
 com.github.wwmm.easyeffects
 
