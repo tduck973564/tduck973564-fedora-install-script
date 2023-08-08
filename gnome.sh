@@ -27,7 +27,6 @@ io.posidon.Paper \
 com.github.finefindus.eyedropper \
 com.usebottles.bottles \
 app.drey.Dialect \
-org.gnome.Geary \
 org.gnome.Builder \
 com.github.maoschanz.drawing \
 ca.desrt.dconf-editor \
@@ -84,9 +83,13 @@ gsettings set org.gnome.software packaging-format-preference "['flatpak:flathub'
 
 gsettings set org.gnome.desktop.notifications.application:/org/gnome/desktop/notifications/application/org-freedesktop-problems-applet/ enable false
 
-echo "Install firefox theme"
+echo "Install firefox and thunderbird theme"
 cd ~/Repositories
 git clone https://github.com/rafaelmardojai/firefox-gnome-theme
 cd firefox-gnome-theme
+./scripts/auto-install.sh
+cd ~/Repositories
+git clone https://github.com/rafaelmardojai/thunderbird-gnome-theme 
+cd thunderbird-gnome-theme
 ./scripts/auto-install.sh
 cd ~
