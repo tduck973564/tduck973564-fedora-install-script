@@ -54,42 +54,8 @@ pip install --upgrade pip
 pip install pylint
 curl -sSL https://install.python-poetry.org | python3 -
 
-echo "Installation of TypeScript and JavaScript"
-sudo dnf install -y nodejs
-sudo npm install -g typescript npm
-
-echo "Installation of Java"
-sudo dnf install -y java-17-openjdk java-17-openjdk-devel
-
 echo "Installation of build-essential equivalent, clang, Meson and Ninja"
 sudo dnf install -y make automake gcc gcc-c++ kernel-devel clang clang-tools-extra meson ninja-build
-
-echo "Installation of JetBrains"
-curl -fsSL https://raw.githubusercontent.com/nagygergo/jetbrains-toolbox-install/master/jetbrains-toolbox.sh | bash
-jetbrains-toolbox
-
-echo "Installation of VSCode extensions"
-code --install-extension ms-python.python
-code --install-extension GitHub.copilot
-code --install-extension GitHub.copilot-labs
-code --install-extension vadimcn.vscode-lldb
-code --install-extension icrawl.discord-vscode
-code --install-extension rust-lang.rust-analyzer
-code --install-extension serayuzgur.crates
-code --install-extension bungcip.better-toml
-code --install-extension emilast.LogFileHighlighter
-code --install-extension wakatime.vscode-wakatime
-code --install-extension michelemelluso.code-beautifier
-code --install-extension mrmlnc.vscode-scss
-code --install-extension ritwickdey.liveserver
-code --install-extension ritwickdey.live-sass
-code --install-extension github.vscode-pull-request-github
-code --install-extension eamodio.gitlens
-code --install-extension ms-vscode.cpptools-extension-pack
-code --install-extension ms-vscode.makefile-tools
-code --install-extension mesonbuild.mesonbuild
-code --uninstall-extension ms-vscode.cpptools
-code --install-extension llvm-vs-code-extensions.vscode-clangd
 
 echo "Installation of apps"
 
