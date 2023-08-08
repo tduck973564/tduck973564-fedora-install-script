@@ -31,7 +31,7 @@ org.gnome.Geary \
 org.gnome.Builder \
 com.github.maoschanz.drawing \
 ca.desrt.dconf-editor \
-com.github.unrud.VideoDownloader \
+org.nickvision.tubeconverter \
 org.gnome.Loupe \
 org.gnome.Firmware
 

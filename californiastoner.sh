@@ -122,7 +122,7 @@ app.drey.Dialect \
 org.gnome.Geary \
 com.github.maoschanz.drawing \
 ca.desrt.dconf-editor \
-com.github.unrud.VideoDownloader \
+org.nickvision.tubeconverter \
 org.gnome.Loupe \
 org.gnome.Firmware \
 com.usebottles.bottles
