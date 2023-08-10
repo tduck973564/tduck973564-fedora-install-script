@@ -42,7 +42,7 @@ flatpak install -y flathub org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3
 echo "Install shell extensions"
 gsettings set org.gnome.shell disable-extension-version-validation true
 
-array=( https://extensions.gnome.org/extension/5237/rounded-window-corners/ https://extensions.gnome.org/extension/3733/tiling-assistant/ )
+array=( https://extensions.gnome.org/extension/5446/quick-settings-tweaker/ https://extensions.gnome.org/extension/3843/just-perfection/ https://extensions.gnome.org/extension/5237/rounded-window-corners/ https://extensions.gnome.org/extension/4481/forge/ )
 
 for i in "${array[@]}"
 do
