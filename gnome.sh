@@ -35,8 +35,7 @@ org.gnome.Loupe \
 org.gnome.Firmware
 
 echo "Fix inconsistent GNOME theming"
-sudo dnf copr enable nickavem/adw-gtk3 -y
-sudo dnf install -y adw-gtk3
+sudo dnf install -y adw-gtk3-theme
 flatpak install -y flathub org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
 
 echo "Install shell extensions"
