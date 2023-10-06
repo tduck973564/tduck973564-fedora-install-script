@@ -1,11 +1,12 @@
 #!/bin/bash
-echo "Installation of GNOME Apps"
-sudo dnf remove -y \
-gnome-terminal \
-rhythmbox \
-eog
+cd ~
 
-sudo dnf install -y \
+echo "Installation of GNOME Apps"
+sudo dnf5 remove -y \
+gnome-terminal \
+rhythmbox
+
+sudo dnf5 install -y \
 gnome-tweaks \
 seahorse \
 gnome-console \
@@ -27,15 +28,36 @@ io.posidon.Paper \
 com.github.finefindus.eyedropper \
 com.usebottles.bottles \
 app.drey.Dialect \
-org.gnome.Builder \
 com.github.maoschanz.drawing \
 ca.desrt.dconf-editor \
 org.nickvision.tubeconverter \
-org.gnome.Loupe \
-org.gnome.Firmware
+org.gnome.Firmware \
+de.philippun1.turtle \
+de.philippun1.Snoop
+
+echo "Install nautilus extensions"
+sudo dnf5 install nautilus-extensions python-requests nautilus-python python3-gobject
+
+cd ~/Repositories
+
+git clone https://gitlab.gnome.org/philippun1/turtle.git
+cd turtle
+sudo python install.py install --flatpak
+cd ..
+sudo rm -rf turtle
+
+git clone https://gitlab.gnome.org/philippun1/snoop.git
+sudo cp snoop/extension/snoop.py /usr/share/nautilus-python/extensions
+cd ..
+sudo rm -rf snoop
+
+git clone https://github.com/ronen25/nautilus-copypath
+sudo cp nautilus-copypath/nautilus-copypath.py /usr/share/nautilus-python/extensions/
+
+cd ~
 
 echo "Fix inconsistent GNOME theming"
-sudo dnf install -y adw-gtk3-theme
+sudo dnf5 install -y adw-gtk3-theme
 flatpak install -y flathub org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
 
 echo "Install shell extensions"
@@ -58,11 +80,10 @@ done
 
 gnome-extensions disable background-logo@fedorahosted.org
 gnome-extensions enable rounded-window-corners@yilozt
-gnome-extensions enable tiling-assistant@leleat-on-github
 
 echo "Fractional scaling"
-gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
 gsettings set org.gnome.mutter experimental-features "['x11-randr-fractional-scaling']"
+gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
 
 echo "Set theme settings"
 gsettings set org.gnome.desktop.interface clock-show-weekday true
@@ -81,6 +102,11 @@ gsettings set org.gnome.shell had-bluetooth-devices-setup true
 gsettings set org.gnome.software packaging-format-preference "['flatpak:flathub', 'rpm', 'flatpak:fedora-testing', 'flatpak:fedora']"
 
 gsettings set org.gnome.desktop.notifications.application:/org/gnome/desktop/notifications/application/org-freedesktop-problems-applet/ enable false
+
+echo "Install morewaita"
+sudo dnf5 copr enable dusansimic/themes
+sudo dnf5 install morewaita-icon-theme
+gsettings set org.gnome.desktop.interface icon-theme 'MoreWaita'
 
 echo "Install firefox and thunderbird theme"
 cd ~/Repositories

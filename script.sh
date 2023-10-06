@@ -14,8 +14,8 @@ sudo echo 'countme=false' | sudo tee -a /etc/dnf/dnf.conf
 
 echo "Installation of RPMFusion"
 sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf groupupdate -y core
-sudo dnf groupupdate -y multimedia --setop="install_weak_deps=False"
+sudo dnf groupupdate -y core --allowerasing
+sudo dnf groupupdate -y multimedia --setop="install_weak_deps=False" --allowerasing
 sudo dnf install -y ffmpeg --allowerasing
 
 echo "Install Flathub"
@@ -32,9 +32,13 @@ echo "setopt +o nomatch" >> ~/.zshrc
 echo "zmodule bira" >> ~/.zimrc
 zimfw install
 
+echo "Use dnf5"
+sudo dnf install -y dnf5
+echo "alias dnf5='dnf'" >> ~/.zshrc
+
 echo "Installation of GitHub CLI and setup of Git"
-sudo dnf config-manager -y --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
-sudo dnf install -y gh
+sudo dnf5 config-manager -y --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
+sudo dnf5 install -y gh
 sh -c "gh auth login"
 
 echo "Type in your git username: "
@@ -52,22 +56,22 @@ echo "Installation of Rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable --profile default -y
 
 echo "Installation of Python"
-sudo dnf install -y python pip
+sudo dnf5 install -y python pip
 pip install --upgrade pip
 pip install pylint
 curl -sSL https://install.python-poetry.org | python3 -
 
 echo "Installation of build-essential equivalent, clang, Meson and Ninja"
-sudo dnf install -y make automake gcc gcc-c++ kernel-devel clang clang-tools-extra meson ninja-build
+sudo dnf5 install -y make automake gcc gcc-c++ kernel-devel clang clang-tools-extra meson ninja-build
 
 echo "Installation of apps"
 
-sudo dnf remove -y \
+sudo dnf5 remove -y \
 fedora-bookmarks \
 mediawriter \
 libreoffice*
 
-sudo dnf install -y \
+sudo dnf5 install -y \
 firewall-config \
 discord \
 pavucontrol \
@@ -75,8 +79,6 @@ openssl
 
 flatpak install -y flathub \
 com.github.tchx84.Flatseal \
-org.musescore.MuseScore \
-org.inkscape.Inkscape \
 com.github.wwmm.easyeffects \
 org.libreoffice.LibreOffice \
 org.mozilla.Thunderbird
@@ -102,7 +104,7 @@ mkdir ~/Coding
 
 echo "Install nvidia drivers if nvidia gpu is installed"
 if [[ $(lspci) = *NVIDIA* ]]; then
-sudo dnf install -y akmod-nvidia xorg-x11-drv-nvidia-cuda
+sudo dnf5 install -y akmod-nvidia xorg-x11-drv-nvidia-cuda
 sudo akmods
 cat <<EOF | sudo tee /etc/modprobe.d/blacklist-nouveau.conf
 blacklist nouveau
@@ -113,15 +115,15 @@ flatpak update
 fi
 
 echo "Install OneDrive"
-sudo dnf install -y onedrive
+sudo dnf5 install -y onedrive
 onedrive
 systemctl --user enable onedrive
 systemctl --user start onedrive
 
 echo "Download icon theme and fonts"
-sudo dnf install -y ibm-plex-fonts-all rsms-inter-fonts
+sudo dnf5 install -y ibm-plex-fonts-all rsms-inter-fonts
 
 echo "Install AppImageLauncher"
-sudo dnf install -y https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
+sudo dnf5 install -y https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
 
 echo -e '\nDone!'
