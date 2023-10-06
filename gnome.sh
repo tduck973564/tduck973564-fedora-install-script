@@ -32,6 +32,7 @@ com.github.maoschanz.drawing \
 ca.desrt.dconf-editor \
 org.nickvision.tubeconverter \
 org.gnome.Firmware \
+io.gitlab.adhami3310.Impression \
 de.philippun1.turtle \
 de.philippun1.Snoop
 
