@@ -37,7 +37,6 @@ sudo dnf install -y dnf5
 echo "alias dnf5='dnf'" >> ~/.zshrc
 
 echo "Installation of GitHub CLI and setup of Git"
-sudo dnf5 config-manager -y --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
 sudo dnf5 install -y gh
 sh -c "gh auth login"
 
@@ -47,7 +46,7 @@ echo "Type in your git email: "
 read GITEMAIL
 
 git config --global user.name $GITUSERNAME
-git config --global user.email  $GITEMAIL
+git config --global user.email $GITEMAIL
 
 echo "Installation of VSCode"
 flatpak install -y flathub com.visualstudio.code
