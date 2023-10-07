@@ -13,6 +13,7 @@ gnome-console \
 gnome-backgrounds-extras
 
 flatpak install -y flathub \
+com.github.tchx84.Flatseal \
 com.mattjakeman.ExtensionManager \
 io.github.realmazharhussain.GdmSettings \
 io.bassi.Amberol \
