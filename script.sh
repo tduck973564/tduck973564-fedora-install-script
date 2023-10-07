@@ -68,7 +68,6 @@ echo "Installation of apps"
 sudo dnf5 remove -y \
 fedora-bookmarks \
 mediawriter \
-libreoffice*
 
 sudo dnf5 install -y \
 firewall-config \
@@ -79,7 +78,6 @@ openssl
 flatpak install -y flathub \
 com.github.tchx84.Flatseal \
 com.github.wwmm.easyeffects \
-org.libreoffice.LibreOffice \
 org.mozilla.Thunderbird
 
 sudo flatpak override --socket=wayland org.mozilla.Thunderbird
@@ -119,7 +117,7 @@ onedrive
 systemctl --user enable onedrive
 systemctl --user start onedrive
 
-echo "Download icon theme and fonts"
+echo "Download fonts"
 sudo dnf5 install -y ibm-plex-fonts-all rsms-inter-fonts
 
 echo "Install AppImageLauncher"
