@@ -76,7 +76,6 @@ pavucontrol \
 openssl
 
 flatpak install -y flathub \
-com.github.tchx84.Flatseal \
 com.github.wwmm.easyeffects \
 org.mozilla.Thunderbird
 
