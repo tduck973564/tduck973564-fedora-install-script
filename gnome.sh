@@ -106,7 +106,7 @@ gsettings set org.gnome.software packaging-format-preference "['flatpak:flathub'
 gsettings set org.gnome.desktop.notifications.application:/org/gnome/desktop/notifications/application/org-freedesktop-problems-applet/ enable false
 
 echo "Install morewaita"
-sudo dnf5 copr enable dusansimic/themes
+sudo dnf copr enable dusansimic/themes
 sudo dnf5 install morewaita-icon-theme
 gsettings set org.gnome.desktop.interface icon-theme 'MoreWaita'
 
