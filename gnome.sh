@@ -35,7 +35,9 @@ org.nickvision.tubeconverter \
 org.gnome.Firmware \
 io.gitlab.adhami3310.Impression \
 de.philippun1.turtle \
-de.philippun1.Snoop
+de.philippun1.Snoop \
+net.nokyan.Resources
+
 
 echo "Install nautilus extensions"
 sudo dnf5 install nautilus-extensions python-requests nautilus-python python3-gobject
