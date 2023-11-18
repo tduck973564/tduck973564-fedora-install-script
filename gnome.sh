@@ -4,7 +4,8 @@ cd ~
 echo "Installation of GNOME Apps"
 sudo dnf5 remove -y \
 gnome-terminal \
-rhythmbox
+rhythmbox \
+gnome-system-monitor
 
 sudo dnf5 install -y \
 gnome-tweaks \
