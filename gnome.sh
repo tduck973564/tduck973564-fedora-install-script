@@ -5,41 +5,13 @@ echo "Installation of GNOME Apps"
 sudo dnf5 remove -y \
 gnome-terminal \
 rhythmbox \
-gnome-system-monitor \
-cheese
+gnome-system-monitor
 
 sudo dnf5 install -y \
 gnome-tweaks \
 seahorse \
 gnome-console \
 gnome-backgrounds-extras
-
-flatpak install -y flathub \
-com.github.tchx84.Flatseal \
-com.mattjakeman.ExtensionManager \
-io.github.realmazharhussain.GdmSettings \
-io.bassi.Amberol \
-com.github.huluti.Curtail \
-com.belmoussaoui.Decoder \
-com.adrienplazas.Metronome \
-com.github.alexhuntley.Plots \
-org.gnome.SoundRecorder \
-org.gnome.Solanum \
-com.github.liferooter.textpieces \
-com.github.hugolabe.Wike \
-io.posidon.Paper \
-com.github.finefindus.eyedropper \
-com.usebottles.bottles \
-app.drey.Dialect \
-com.github.maoschanz.drawing \
-ca.desrt.dconf-editor \
-org.nickvision.tubeconverter \
-org.gnome.Firmware \
-io.gitlab.adhami3310.Impression \
-de.philippun1.turtle \
-de.philippun1.Snoop \
-net.nokyan.Resources \
-org.gnome.Snapshot
 
 FLATPAK_FLATHUB=( com.github.tchx84.Flatseal
 com.mattjakeman.ExtensionManager
@@ -63,8 +35,7 @@ org.gnome.Firmware
 io.gitlab.adhami3310.Impression
 de.philippun1.turtle
 de.philippun1.Snoop
-net.nokyan.Resources
-org.gnome.Snapshot )
+net.nokyan.Resources )
 
 for app in ${FLATPAK_FLATHUB[@]}; do
 	flatpak install -y flathub "$app"
