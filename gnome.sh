@@ -5,7 +5,8 @@ echo "Installation of GNOME Apps"
 sudo dnf5 remove -y \
 gnome-terminal \
 rhythmbox \
-gnome-system-monitor
+gnome-system-monitor \
+cheese
 
 sudo dnf5 install -y \
 gnome-tweaks \
@@ -37,8 +38,37 @@ org.gnome.Firmware \
 io.gitlab.adhami3310.Impression \
 de.philippun1.turtle \
 de.philippun1.Snoop \
-net.nokyan.Resources
+net.nokyan.Resources \
+org.gnome.Snapshot
 
+FLATPAK_FLATHUB=( com.github.tchx84.Flatseal
+com.mattjakeman.ExtensionManager
+io.github.realmazharhussain.GdmSettings
+io.bassi.Amberol
+com.github.huluti.Curtail
+com.belmoussaoui.Decoder
+com.adrienplazas.Metronome
+com.github.alexhuntley.Plots
+org.gnome.SoundRecorder
+org.gnome.Solanum
+com.github.liferooter.textpieces
+com.github.hugolabe.Wike
+io.posidon.Paper
+com.github.finefindus.eyedropper
+app.drey.Dialect
+com.github.maoschanz.drawing
+ca.desrt.dconf-editor
+org.nickvision.tubeconverter
+org.gnome.Firmware
+io.gitlab.adhami3310.Impression
+de.philippun1.turtle
+de.philippun1.Snoop
+net.nokyan.Resources
+org.gnome.Snapshot )
+
+for app in ${FLATPAK_FLATHUB[@]}; do
+	flatpak install -y flathub "$app"
+done
 
 echo "Install nautilus extensions"
 sudo dnf5 install nautilus-extensions python-requests nautilus-python python3-gobject
@@ -68,7 +98,7 @@ flatpak install -y flathub org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3
 echo "Install shell extensions"
 gsettings set org.gnome.shell disable-extension-version-validation true
 
-array=( https://extensions.gnome.org/extension/5446/quick-settings-tweaker/ https://extensions.gnome.org/extension/4998/legacy-gtk3-theme-scheme-auto-switcher/ https://extensions.gnome.org/extension/3843/just-perfection/ https://extensions.gnome.org/extension/5237/rounded-window-corners/ https://extensions.gnome.org/extension/4481/forge/ )
+array=( https://extensions.gnome.org/extension/5446/quick-settings-tweaker/ https://extensions.gnome.org/extension/4998/legacy-gtk3-theme-scheme-auto-switcher/ https://extensions.gnome.org/extension/5237/rounded-window-corners/ https://extensions.gnome.org/extension/4481/forge/ )
 
 for i in "${array[@]}"
 do
@@ -84,7 +114,6 @@ do
 done
 
 gnome-extensions disable background-logo@fedorahosted.org
-gnome-extensions enable rounded-window-corners@yilozt
 
 echo "Fractional scaling"
 gsettings set org.gnome.mutter experimental-features "['x11-randr-fractional-scaling']"
@@ -92,6 +121,7 @@ gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffe
 
 echo "Set theme settings"
 gsettings set org.gnome.desktop.interface clock-show-weekday true
+gsettings set org.gnome.desktop.interface clock-format 12h
 
 gsettings set org.gnome.desktop.interface document-font-name 'Inter 11'
 gsettings set org.gnome.desktop.interface font-name 'Inter 11'
@@ -109,9 +139,13 @@ gsettings set org.gnome.software packaging-format-preference "['flatpak:flathub'
 gsettings set org.gnome.desktop.notifications.application:/org/gnome/desktop/notifications/application/org-freedesktop-problems-applet/ enable false
 
 echo "Install morewaita"
-sudo dnf copr enable dusansimic/themes
-sudo dnf5 install morewaita-icon-theme
-gsettings set org.gnome.desktop.interface icon-theme 'MoreWaita'
+arch=`uname -m`
+if [ "$arch" == "x86_64" ]
+then
+    sudo dnf copr enable dusansimic/themes
+    sudo dnf5 install morewaita-icon-theme
+    gsettings set org.gnome.desktop.interface icon-theme 'MoreWaita'
+fi
 
 echo "Install firefox and thunderbird theme"
 cd ~/Repositories
