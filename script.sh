@@ -91,12 +91,6 @@ echo "Download fonts"
 sudo dnf5 install -y ibm-plex-fonts-all rsms-inter-fonts
 
 echo "Install AppImageLauncher"
-
-if [ "$arch" == "x86_64" ]
-then
-  sudo dnf5 install -y https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
-else
-  sudo dnf5 install -y https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.armhf.rpm
-fi
+sudo dnf5 install -y https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
 
 echo -e '\nDone!'
