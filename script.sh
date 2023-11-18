@@ -36,18 +36,23 @@ mediawriter \
 
 sudo dnf5 install -y \
 firewall-config \
-discord \
 pavucontrol \
 openssl
 
 flatpak install -y flathub \
-com.github.wwmm.easyeffects \
-org.mozilla.Thunderbird
+com.github.wwmm.easyeffects
 
-sudo flatpak override --socket=wayland org.mozilla.Thunderbird
-flatpak override --user --env=MOZ_ENABLE_WAYLAND=1 org.mozilla.Thunderbird
+arch=`uname -m`
+if [ "$arch" == "x86_64" ]
+then
+  flatpak install -y flathub org.mozilla.Thunderbird
 
-sudo sh -c "echo \"[Desktop Entry]
+  sudo flatpak override --socket=wayland org.mozilla.Thunderbird
+  flatpak override --user --env=MOZ_ENABLE_WAYLAND=1 org.mozilla.
+
+  sudo dnf5 install -y discord
+  
+  sudo sh -c "echo \"[Desktop Entry]
 Name=Discord
 StartupWMClass=discord
 Comment=All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone.
@@ -58,6 +63,7 @@ Type=Application
 Categories=Network;InstantMessaging;
 Path=/usr/bin
 X-Desktop-File-Install-Version=0.26\" > /usr/share/applications/discord.desktop"
+fi
 
 echo "Make some folders"
 mkdir ~/Repositories
@@ -85,6 +91,12 @@ echo "Download fonts"
 sudo dnf5 install -y ibm-plex-fonts-all rsms-inter-fonts
 
 echo "Install AppImageLauncher"
-sudo dnf5 install -y https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
+
+if [ "$arch" == "x86_64" ]
+then
+  sudo dnf5 install -y https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
+else
+  sudo dnf5 install -y https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.armhf.rpm
+fi
 
 echo -e '\nDone!'
