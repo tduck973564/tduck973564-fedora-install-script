@@ -152,8 +152,11 @@ cd ~/Repositories
 git clone https://github.com/rafaelmardojai/firefox-gnome-theme
 cd firefox-gnome-theme
 ./scripts/auto-install.sh
-cd ~/Repositories
-git clone https://github.com/rafaelmardojai/thunderbird-gnome-theme 
-cd thunderbird-gnome-theme
-./scripts/auto-install.sh
+if [ "$arch" == "x86_64" ]
+then
+    cd ~/Repositories
+    git clone https://github.com/rafaelmardojai/thunderbird-gnome-theme 
+    cd thunderbird-gnome-theme
+    ./scripts/auto-install.sh
+fi
 cd ~
