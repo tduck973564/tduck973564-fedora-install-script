@@ -2,7 +2,42 @@
 
 # Fedora Install Script by tduck973564
 
+echo "CD into home directory"
 cd ~
+
+echo "Speed up DNF"
+sudo dnf install dnf-plugins-core -y
+sudo echo 'fastestmirror=True' | sudo tee -a /etc/dnf/dnf.conf
+sudo echo 'max_parallel_downloads=10' | sudo tee -a /etc/dnf/dnf.conf
+sudo echo 'deltarpm=true' | sudo tee -a /etc/dnf/dnf.conf
+sudo echo 'countme=false' | sudo tee -a /etc/dnf/dnf.conf
+
+echo "Installation of RPMFusion"
+sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf groupupdate -y core --allowerasing
+sudo dnf groupupdate -y multimedia --setop="install_weak_deps=False" --allowerasing
+sudo dnf install -y ffmpeg --allowerasing
+
+echo "Install Flathub"
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+echo "Update system before continuing"
+sudo dnf --refresh upgrade -y
+
+echo "Installation of Zim"
+sudo dnf install -y util-linux-user zsh git
+chsh -s /usr/bin/zsh
+curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+echo "setopt +o nomatch" >> ~/.zshrc
+echo "zmodule bira" >> ~/.zimrc
+zimfw install
+
+echo "Use dnf5"
+sudo dnf install -y dnf5
+echo "alias dnf5='dnf'" >> ~/.zshrc
+
+echo "Installation of GitHub CLI and setup of Git"
+sudo dnf5 install -y gh
 sh -c "gh auth login"
 
 echo "Type in your git username: "
