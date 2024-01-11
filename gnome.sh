@@ -20,7 +20,7 @@ io.bassi.Amberol
 com.github.huluti.Curtail
 com.belmoussaoui.Decoder
 com.adrienplazas.Metronome
-com.github.alexhuntley.Plots
+se.sjoerd.Graphs
 org.gnome.SoundRecorder
 org.gnome.Solanum
 com.github.liferooter.textpieces
