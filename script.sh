@@ -98,6 +98,9 @@ sudo dracut --regenerate-all --force
 flatpak update
 fi
 
+echo "Increase vm max map count"
+sudo sh -c "echo 'vm.max_map_count=2147483642' >> /etc/sysctl.conf"
+
 echo "Install OneDrive"
 sudo dnf5 install -y onedrive
 onedrive
