@@ -65,7 +65,7 @@ then
   flatpak install -y flathub org.mozilla.Thunderbird
 
   sudo flatpak override --socket=wayland org.mozilla.Thunderbird
-  flatpak override --user --env=MOZ_ENABLE_WAYLAND=1 org.mozilla.
+  flatpak override --user --env=MOZ_ENABLE_WAYLAND=1 org.mozilla.Thunderbird
 
   sudo dnf5 install -y discord
   
