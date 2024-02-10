@@ -35,7 +35,8 @@ org.gnome.Firmware
 io.gitlab.adhami3310.Impression
 de.philippun1.turtle
 de.philippun1.Snoop
-net.nokyan.Resources )
+net.nokyan.Resources
+com.github.wwmm.easyeffects )
 
 for app in ${FLATPAK_FLATHUB[@]}; do
 	flatpak install -y flathub "$app"
