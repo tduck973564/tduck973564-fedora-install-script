@@ -48,12 +48,6 @@ read GITEMAIL
 git config --global user.name $GITUSERNAME
 git config --global user.email $GITEMAIL
 
-echo "Installation of VSCode"
-flatpak install -y flathub com.visualstudio.code
-
-echo "Installation of Rust"
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable --profile default -y
-
 echo "Installation of Python"
 sudo dnf5 install -y python pip
 pip install --upgrade pip
