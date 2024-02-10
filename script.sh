@@ -48,15 +48,6 @@ read GITEMAIL
 git config --global user.name $GITUSERNAME
 git config --global user.email $GITEMAIL
 
-echo "Installation of Python"
-sudo dnf5 install -y python pip
-pip install --upgrade pip
-pip install pylint
-curl -sSL https://install.python-poetry.org | python3 -
-
-echo "Installation of build-essential equivalent, clang, Meson and Ninja"
-sudo dnf5 install -y make automake gcc gcc-c++ kernel-devel clang clang-tools-extra meson ninja-build
-
 echo "Installation of apps"
 
 sudo dnf5 remove -y \
@@ -67,9 +58,6 @@ sudo dnf5 install -y \
 firewall-config \
 pavucontrol \
 openssl
-
-flatpak install -y flathub \
-com.github.wwmm.easyeffects
 
 arch=`uname -m`
 if [ "$arch" == "x86_64" ]
