@@ -5,7 +5,9 @@ sudo dnf5 remove pim* akonadi* akregator krusader korganizer kmail ktnef kaddres
 echo "Install some apps"
 
 FLATPAK_FLATHUB=( org.kde.kalgebra
-org.kde.isoimagewriter )
+org.kde.isoimagewriter
+org.kde.kclock 
+org.kde.kweather )
 
 for app in ${FLATPAK_FLATHUB[@]}; do
 	flatpak install -y flathub "$app"
