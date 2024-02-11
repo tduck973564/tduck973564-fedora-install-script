@@ -86,18 +86,6 @@ echo "Make some folders"
 mkdir ~/Repositories
 mkdir ~/Coding
 
-echo "Install nvidia drivers if nvidia gpu is installed"
-if [[ $(lspci) = *NVIDIA* ]]; then
-sudo dnf5 install -y akmod-nvidia xorg-x11-drv-nvidia-cuda
-sudo akmods
-cat <<EOF | sudo tee /etc/modprobe.d/blacklist-nouveau.conf
-blacklist nouveau
-options nouveau modeset=0
-EOF
-sudo dracut --regenerate-all --force
-flatpak update
-fi
-
 echo "Enable GSP support on Nouveau driver"
 sudo grubby --args="nouveau.config=NvGspRm=1" --update-kernel=ALL
 
