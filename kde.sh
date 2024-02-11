@@ -2,6 +2,18 @@ echo "Remove Akonadi and useless apps"
 
 sudo dnf5 remove pim* akonadi* akregator krusader korganizer kmail ktnef kaddressbook konversation kf5-akonadi-server mariadb mariadb-backup mariadb-common kmahjongg kpat kmines k3b
 
+echo "Install some apps"
+
+FLATPAK_FLATHUB=( org.kde.kalgebra
+org.kde.isoimagewriter
+org.kde.kommit )
+
+for app in ${FLATPAK_FLATHUB[@]}; do
+	flatpak install -y flathub "$app"
+done
+
+sudo dnf5 install -y media-downloader
+
 echo "Install konsave"
 
 python -m pip install konsave
