@@ -11,8 +11,6 @@ for app in ${FLATPAK_FLATHUB[@]}; do
 	flatpak install -y flathub "$app"
 done
 
-sudo dnf5 install -y media-downloader
-
 echo "Install konsave"
 
 python -m pip install konsave
