@@ -4,6 +4,8 @@ sudo dnf5 remove pim* akonadi* akregator krusader korganizer kmail ktnef kaddres
 
 echo "Install some apps"
 
+sudo dnf5 install -y ksystemlog
+
 FLATPAK_FLATHUB=( org.kde.kalgebra
 org.kde.isoimagewriter
 org.kde.kclock 
