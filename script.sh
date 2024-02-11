@@ -98,6 +98,9 @@ sudo dracut --regenerate-all --force
 flatpak update
 fi
 
+echo "Enable GSP support on Nouveau driver"
+sudo grubby --args="nouveau.config=NvGspRm=1" --update-kernel=ALL
+
 echo "Increase vm max map count"
 sudo sh -c "echo 'vm.max_map_count=2147483642' >> /etc/sysctl.conf"
 
