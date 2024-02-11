@@ -8,7 +8,8 @@ FLATPAK_FLATHUB=( org.kde.kalgebra
 org.kde.isoimagewriter
 org.kde.kclock 
 org.kde.kweather
-org.kde.kcolorchooser )
+org.kde.kcolorchooser
+org.kde.francis )
 
 for app in ${FLATPAK_FLATHUB[@]}; do
 	flatpak install -y flathub "$app"
