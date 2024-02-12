@@ -18,7 +18,6 @@ done
 kwriteconfig5 --file kdesurc --group super-user-command --key super-user-command sudo
 
 echo "Install full libreoffice"
-sudo dnf5 remove -y libreoffice
 sudo dnf5 install -y libreoffice
 
 echo "Install konsave"
