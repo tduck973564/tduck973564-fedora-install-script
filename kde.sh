@@ -1,6 +1,6 @@
-echo "Remove Akonadi and useless apps"
+echo "Remove useless apps"
 
-sudo dnf5 remove akregator krusader ktnef konversation k3b
+sudo dnf5 remove akregator krusader konversation k3b
 
 echo "Install some apps"
 
