@@ -131,4 +131,8 @@ then
     cd thunderbird-gnome-theme
     ./scripts/auto-install.sh
 fi
+
+echo "Install patched gnome"
+sudo dnf copr enable trixieua/mutter-patched -y && sudo dnf update --refresh
+
 cd ~
