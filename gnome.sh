@@ -111,13 +111,11 @@ gsettings set org.gnome.software packaging-format-preference "['flatpak:flathub'
 gsettings set org.gnome.desktop.notifications.application:/org/gnome/desktop/notifications/application/org-freedesktop-problems-applet/ enable false
 
 echo "Install morewaita"
-arch=`uname -m`
-if [ "$arch" == "x86_64" ]
-then
-    sudo dnf copr enable dusansimic/themes
-    sudo dnf5 install morewaita-icon-theme
-    gsettings set org.gnome.desktop.interface icon-theme 'MoreWaita'
-fi
+cd ~/Repositories
+git clone https://github.com/somepaulo/MoreWaita
+cd ./MoreWaita
+sudo ./install.sh
+gsettings set org.gnome.desktop.interface icon-theme 'MoreWaita'
 
 echo "Install firefox and thunderbird theme"
 cd ~/Repositories
