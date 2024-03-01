@@ -6,4 +6,4 @@ for app in ${FLATPAK_FLATHUB[@]}; do
 	flatpak install -y flathub "$app"
 done
 
-sudo pacman -S kaddressbook kdepim-addons kmail kmail-account-wizard merkuro
+sudo pacman -S kdepim-addons kmail kmail-account-wizard merkuro
