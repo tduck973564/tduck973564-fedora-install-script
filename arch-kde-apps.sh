@@ -5,3 +5,5 @@ org.kde.francis )
 for app in ${FLATPAK_FLATHUB[@]}; do
 	flatpak install -y flathub "$app"
 done
+
+sudo pacman -S kaddressbook kdepim-addons kmail kmail-account-wizard kontact korganiszer merkuro
