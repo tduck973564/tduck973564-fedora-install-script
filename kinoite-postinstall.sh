@@ -1,3 +1,5 @@
+sudo rpm-ostree install ffmpeg
+
 chsh -s /usr/bin/zsh
 curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
 echo "setopt +o nomatch" >> ~/.zshrc
