@@ -1,4 +1,4 @@
-sudo rpm-ostree install ffmpeg
+rpm-ostree update --install libavcodec-freeworld
 
 chsh -s /usr/bin/zsh
 curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
