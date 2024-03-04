@@ -6,8 +6,6 @@ sudo rpm-ostree install \
 
 sudo rpm-ostree install https://packagecloud.io/filips/FirefoxPWA/packages/rpm_any/rpm_any/firefoxpwa-2.10.1-1.x86_64.rpm
 
-sudo rpm-ostree install ffmpeg
-
 sudo rpm-ostree install plasma-firewall openssl
 
 sudo rpm-ostree install util-linux-user zsh git gh
