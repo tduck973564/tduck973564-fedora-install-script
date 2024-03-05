@@ -86,9 +86,6 @@ echo "Make some folders"
 mkdir ~/Repositories
 mkdir ~/Coding
 
-echo "Enable GSP support on Nouveau driver"
-sudo grubby --args="nouveau.config=NvGspRm=1" --update-kernel=ALL
-
 echo "Increase vm max map count"
 sudo sh -c "echo 'vm.max_map_count=2147483642' >> /etc/sysctl.conf"
 
@@ -100,8 +97,5 @@ systemctl --user start onedrive
 
 echo "Download fonts"
 sudo dnf5 install -y ibm-plex-fonts-all rsms-inter-fonts
-
-echo "Install AppImageLauncher"
-sudo dnf5 install -y https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
 
 echo -e '\nDone!'
