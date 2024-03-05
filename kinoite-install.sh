@@ -4,7 +4,7 @@ sudo rpm-ostree install \
   https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
   https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-sudo rpm-ostree install https://packagecloud.io/filips/FirefoxPWA/packages/rpm_any/rpm_any/firefoxpwa-2.10.1-1.x86_64.rpm
+sudo rpm-ostree install 'https://packagecloud.io/filips/FirefoxPWA/packages/rpm_any/rpm_any/firefoxpwa-2.10.1-1.x86_64.rpm?distro_version_id=227'
 
 sudo rpm-ostree install plasma-firewall openssl
 
