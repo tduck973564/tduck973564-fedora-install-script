@@ -15,3 +15,5 @@ read GITEMAIL
 
 git config --global user.name $GITUSERNAME
 git config --global user.email $GITEMAIL
+
+echo "\n\nRun `systemctl reboot` to apply changes"
