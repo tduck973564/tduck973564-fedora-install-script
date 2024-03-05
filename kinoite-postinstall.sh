@@ -1,4 +1,4 @@
-rpm-ostree update --install libavcodec-freeworld mozilla-openh264
+rpm-ostree update --install libavcodec-freeworld *-openh264
 
 chsh -s /usr/bin/zsh
 curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
