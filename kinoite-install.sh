@@ -6,7 +6,7 @@ sudo rpm-ostree install \
 
 sudo rpm-ostree install 'https://packagecloud.io/filips/FirefoxPWA/packages/rpm_any/rpm_any/firefoxpwa-2.10.1-1.x86_64.rpm?distro_version_id=227'
 
-sudo rpm-ostree install plasma-firewall openssl
+sudo rpm-ostree install plasma-firewall openssl libreoffice
 
 sudo rpm-ostree install zsh gh
 
@@ -21,7 +21,6 @@ org.kde.kclock
 org.kde.kweather
 org.kde.kcolorchooser
 org.kde.francis 
-org.libreoffice.LibreOffice
 com.github.wwmm.easyeffects )
 
 for app in ${FLATPAK_FLATHUB[@]}; do
