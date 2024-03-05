@@ -27,3 +27,5 @@ for app in ${FLATPAK_FLATHUB[@]}; do
 done
 
 kwriteconfig5 --file kdesurc --group super-user-command --key super-user-command sudo
+
+echo "\n\nRun `systemctl reboot` to apply changes, then run `postinstall.sh`"
