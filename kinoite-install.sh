@@ -8,7 +8,7 @@ sudo rpm-ostree install plasma-firewall openssl libreoffice
 
 sudo rpm-ostree install zsh gh
 
-sudo rpm-ostree kargs --append='nouveau.config=NvGspRm=1'
+sudo rpm-ostree kargs --append='nouveau.config=NvGspRm=1 acpi_osi=Linux'
 
 sudo rpm-ostree install ibm-plex-fonts-all rsms-inter-fonts onedrive epson-inkjet-printer-escpr2
 sudo rpm-ostree install https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
