@@ -1,5 +1,6 @@
 rpm-ostree update --install libavcodec-freeworld *-openh264
 rpm-ostree override remove noopenh264 --install openh264 --install mozilla-openh264
+rpm-ostree install gstreamer1-plugins-bad-free-extras gstreamer1-plugins-bad-freeworld gstreamer1-plugins-ugly gstreamer1-vaapi x265 libheif
 
 chsh -s /usr/bin/zsh
 curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
