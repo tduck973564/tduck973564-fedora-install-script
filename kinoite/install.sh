@@ -12,8 +12,10 @@ rpm-ostree install plasma-firewall openssl libreoffice dragon zsh gh \
 rpm-ostree override remove kcalc
 rpm-ostree install https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
 
-# Install power-profiles-daemon
+# Install power-profiles-daemon, not sure if this is necessary
 rpm-ostree install power-profiles-daemon
+rpm-ostree install powerdevil
+systemctl enable power-profiles-daemon
 
 # Compatibility kernel arguments, should not be required
 #rpm-ostree kargs --append='nouveau.config=NvGspRm=1'
