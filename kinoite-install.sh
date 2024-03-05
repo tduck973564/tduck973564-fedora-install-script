@@ -4,10 +4,6 @@ sudo rpm-ostree install \
   https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
   https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-curl -O "https://packagecloud.io/filips/FirefoxPWA/packages/rpm_any/rpm_any/firefoxpwa-2.10.1-1.x86_64.rpm/download.rpm?distro_version_id=227"
-sudo rpm-ostree install ./download.rpm
-rm -f download.rpm
-
 sudo rpm-ostree install plasma-firewall openssl libreoffice
 
 sudo rpm-ostree install zsh gh
