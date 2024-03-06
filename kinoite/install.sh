@@ -19,7 +19,6 @@ rpm-ostree install https://github.com/TheAssassin/AppImageLauncher/releases/down
 FLATPAK_FLATHUB=( org.kde.isoimagewriter
 org.kde.kclock 
 org.kde.kweather
-org.kde.kcolorchooser
 org.kde.francis 
 com.github.wwmm.easyeffects
 org.kde.okular
