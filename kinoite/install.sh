@@ -9,7 +9,6 @@ rpm-ostree install \
 # Install useful software
 rpm-ostree install plasma-firewall openssl libreoffice dragon zsh gh \
   ibm-plex-fonts-all rsms-inter-fonts onedrive epson-inkjet-printer-escpr2
-rpm-ostree override remove kcalc
 rpm-ostree install https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
 
 # Compatibility kernel arguments, should not be required
