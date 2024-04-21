@@ -43,7 +43,7 @@ for app in ${FLATPAK_FLATHUB[@]}; do
 done
 
 echo "Install nautilus extensions"
-sudo dnf5 install nautilus-extensions python-requests nautilus-python python3-gobject
+sudo dnf5 install -y nautilus-extensions python-requests nautilus-python python3-gobject
 
 cd ~/Repositories
 
