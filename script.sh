@@ -57,7 +57,6 @@ mediawriter \
 
 sudo dnf5 install -y \
 firewall-config \
-pavucontrol \
 openssl
 
 arch=`uname -m`
