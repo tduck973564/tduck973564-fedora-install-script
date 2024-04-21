@@ -20,6 +20,7 @@ sudo dnf install -y ffmpeg --allowerasing
 
 echo "Install Flathub"
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak remote-modify --enable flathub
 
 echo "Update system before continuing"
 sudo dnf --refresh upgrade -y
