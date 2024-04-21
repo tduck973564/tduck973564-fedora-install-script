@@ -84,16 +84,13 @@ fi
 
 echo "Make some folders"
 mkdir ~/Repositories
-mkdir ~/Coding
 
 echo "Increase vm max map count"
 sudo sh -c "echo 'vm.max_map_count=2147483642' >> /etc/sysctl.conf"
 
-echo "Install OneDrive"
-sudo dnf5 install -y onedrive
-onedrive
-systemctl --user enable onedrive
-systemctl --user start onedrive
+echo "Install OneDriver"
+sudo dnf copr enable jstaf/onedriver
+sudo dnf5 install -y onedriver
 
 echo "Download fonts"
 sudo dnf5 install -y ibm-plex-fonts-all rsms-inter-fonts
