@@ -24,8 +24,6 @@ se.sjoerd.Graphs
 org.gnome.SoundRecorder
 org.gnome.Solanum
 com.github.liferooter.textpieces
-com.github.hugolabe.Wike
-io.posidon.Paper
 com.github.finefindus.eyedropper
 app.drey.Dialect
 com.github.maoschanz.drawing
@@ -36,7 +34,9 @@ io.gitlab.adhami3310.Impression
 de.philippun1.turtle
 de.philippun1.Snoop
 net.nokyan.Resources
-com.github.wwmm.easyeffects )
+com.github.wwmm.easyeffects
+io.gitlab.adhami3310.Converter 
+de.haeckerfelix.Fragments )
 
 for app in ${FLATPAK_FLATHUB[@]}; do
 	flatpak install -y flathub "$app"
