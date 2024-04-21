@@ -36,7 +36,8 @@ de.philippun1.Snoop
 net.nokyan.Resources
 com.github.wwmm.easyeffects
 io.gitlab.adhami3310.Converter 
-de.haeckerfelix.Fragments )
+de.haeckerfelix.Fragments
+com.belmoussaoui.Obfuscate )
 
 for app in ${FLATPAK_FLATHUB[@]}; do
 	flatpak install -y flathub "$app"
