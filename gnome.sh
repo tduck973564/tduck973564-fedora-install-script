@@ -70,7 +70,7 @@ flatpak install -y flathub org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3
 echo "Install shell extensions"
 gsettings set org.gnome.shell disable-extension-version-validation true
 
-array=( https://extensions.gnome.org/extension/5446/quick-settings-tweaker/ https://extensions.gnome.org/extension/4998/legacy-gtk3-theme-scheme-auto-switcher/ https://extensions.gnome.org/extension/4481/forge/ )
+array=( https://extensions.gnome.org/extension/3193/blur-my-shell/ https://extensions.gnome.org/extension/517/caffeine/ https://extensions.gnome.org/extension/4998/legacy-gtk3-theme-scheme-auto-switcher/ https://extensions.gnome.org/extension/4481/forge/ )
 
 for i in "${array[@]}"
 do
