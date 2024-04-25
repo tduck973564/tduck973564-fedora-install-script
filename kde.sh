@@ -1,28 +1,29 @@
 echo "Remove useless apps"
 
-sudo dnf5 remove akregator krusader konversation k3b
+sudo dnf5 remove akregator krusader konversation k3b kontact kmail korganizer kaddressbook *akonadi* kcalc krdc krfb
 
 echo "Install some apps"
 
-FLATPAK_FLATHUB=( org.kde.kalgebra
-org.kde.isoimagewriter
+FLATPAK_FLATHUB=( org.kde.isoimagewriter
 org.kde.kclock 
 org.kde.kweather
-org.kde.kcolorchooser
-org.kde.francis )
+org.kde.francis
+org.kde.kalk
+org.kde.kget
+org.kde.ktorrent )
 for app in ${FLATPAK_FLATHUB[@]}; do
 	flatpak install -y flathub "$app"
 done
 
-sudo dnf5 install -y libreoffice dnfdragora
+sudo dnf5 install -y libreoffice kdenetwork-filesharing plasma-firewall kcolorchooser
 kwriteconfig5 --file kdesurc --group super-user-command --key super-user-command sudo
 
-echo "Install konsave"
+#echo "Install konsave"
 
-python -m pip install konsave
-echo "PATH=$PATH:$HOME/.local/bin" >> ~/.zshrc
-source ~/.zshrc
-konsave --help
+#python -m pip install konsave
+#echo "PATH=$PATH:$HOME/.local/bin" >> ~/.zshrc
+#source ~/.zshrc
+#konsave --help
 echo '---
 # This is the configuration file for konsave.
 # This file is pre-configured for KDE Plasma users.
@@ -142,5 +143,5 @@ export:
     #         - folder2
 ...' > ~/.config/konsave/conf.yaml
 
-echo "Import konsave config"
-konsave --import-profile plasmaprofile.knsv
+#echo "Import konsave config"
+#konsave --import-profile plasmaprofile.knsv

@@ -12,18 +12,31 @@ sudo echo 'max_parallel_downloads=10' | sudo tee -a /etc/dnf/dnf.conf
 sudo echo 'deltarpm=true' | sudo tee -a /etc/dnf/dnf.conf
 sudo echo 'countme=false' | sudo tee -a /etc/dnf/dnf.conf
 
-echo "Installation of RPMFusion"
+echo "Update system before continuing"
+sudo dnf --refresh upgrade -y
+flatpak update
+
+echo "Installation of RPMFusion and codecs"
 sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf groupupdate -y core --allowerasing
-sudo dnf groupupdate -y multimedia --setop="install_weak_deps=False" --allowerasing
-sudo dnf install -y ffmpeg --allowerasing
+sudo dnf swap -y ffmpeg-free ffmpeg --allowerasing
+sudo dnf groupupdate multimedia -y --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin --allowerasing
+sudo dnf groupupdate -y sound-and-video
+sudo dnf config-manager --enable -y fedora-cisco-openh264
+sudo dnf install -y rpmfusion-free-release-tainted
+sudo dnf install -y libdvdcss
+sudo dnf install -y rpmfusion-nonfree-release-tainted
+sudo dnf --repo=rpmfusion-nonfree-tainted install -y "*-firmware"
+sudo dnf install -y intel-media-driver libva-intel-driver nvidia-vaapi-driver libva-utils vdpauinfo libavcodec-freeworld
+sudo dnf swap -y mesa-va-drivers mesa-va-drivers-freeworld
+sudo dnf swap -y mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
+sudo dnf swap -y mesa-va-drivers.i686 mesa-va-drivers-freeworld.i686
+sudo dnf swap -y mesa-vdpau-drivers.i686 mesa-vdpau-drivers-freeworld.i686
+sudo dnf install -y gstreamer1-plugin-openh264 mozilla-openh264
 
 echo "Install Flathub"
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak remote-modify --enable flathub
-
-echo "Update system before continuing"
-sudo dnf --refresh upgrade -y
 
 echo "Installation of Zim"
 sudo dnf install -y util-linux-user zsh git
@@ -35,7 +48,9 @@ zimfw install
 
 echo "Use dnf5"
 sudo dnf install -y dnf5
-echo "alias dnf5='dnf'" >> ~/.zshrc
+echo "PATH=$PATH:$HOME/.local/bin" >> ~/.zshrc
+mkdir ~/.local/bin
+ln -sf /usr/bin/dnf5 ~/.local/bin/dnf
 
 echo "Installation of GitHub CLI and setup of Git"
 sudo dnf5 install -y gh
@@ -49,15 +64,24 @@ read GITEMAIL
 git config --global user.name $GITUSERNAME
 git config --global user.email $GITEMAIL
 
-echo "Installation of apps"
+echo "Installation of apps and printer driver"
 
 sudo dnf5 remove -y \
 fedora-bookmarks \
-mediawriter \
+mediawriter
 
 sudo dnf5 install -y \
 firewall-config \
-openssl
+openssl openssl-libs \
+python3-pip
+
+sudo dnf5 install -y \
+epson-inkjet-printer-escpr2 \
+foomatic-db \
+gutenprint \
+hplip
+
+sudo dnf5 install -y @printing
 
 arch=`uname -m`
 if [ "$arch" == "x86_64" ]
@@ -66,20 +90,6 @@ then
 
   sudo flatpak override --socket=wayland org.mozilla.Thunderbird
   flatpak override --user --env=MOZ_ENABLE_WAYLAND=1 org.mozilla.Thunderbird
-
-  sudo dnf5 install -y discord
-  
-  sudo sh -c "echo \"[Desktop Entry]
-Name=Discord
-StartupWMClass=discord
-Comment=All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone.
-GenericName=Internet Messenger
-Exec=/usr/bin/Discord --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto
-Icon=discord
-Type=Application
-Categories=Network;InstantMessaging;
-Path=/usr/bin
-X-Desktop-File-Install-Version=0.26\" > /usr/share/applications/discord.desktop"
 fi
 
 echo "Make some folders"
