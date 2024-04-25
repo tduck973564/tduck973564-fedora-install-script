@@ -20,7 +20,7 @@ echo "Installation of RPMFusion and codecs"
 sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf groupupdate -y core --allowerasing
 sudo dnf swap -y ffmpeg-free ffmpeg --allowerasing
-sudo dnf groupupdate multimedia -y --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin --allowerasing
+sudo dnf groupupdate multimedia -y --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin --allowerasing --with-optional
 sudo dnf groupupdate -y sound-and-video
 sudo dnf config-manager --enable -y fedora-cisco-openh264
 sudo dnf install -y rpmfusion-free-release-tainted
@@ -33,6 +33,7 @@ sudo dnf swap -y mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
 sudo dnf swap -y mesa-va-drivers.i686 mesa-va-drivers-freeworld.i686
 sudo dnf swap -y mesa-vdpau-drivers.i686 mesa-vdpau-drivers-freeworld.i686
 sudo dnf install -y gstreamer1-plugin-openh264 mozilla-openh264
+sudo dnf install -y lame\* --exclude=lame-devel
 
 echo "Install Flathub"
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -74,6 +75,11 @@ sudo dnf5 install -y \
 firewall-config \
 openssl openssl-libs \
 python3-pip \
+nmap \
+p7zip \
+p7zip-plugins \
+unzip \
+unrar \
 steam-devices
 
 sudo dnf5 install -y \
@@ -93,6 +99,11 @@ then
   flatpak override --user --env=MOZ_ENABLE_WAYLAND=1 org.mozilla.Thunderbird
 fi
 
+echo "Enable wayland by default in supported electron apps"
+echo "ELECTRON_OZONE_PLATFORM_HINT=auto" >> ~/.bashrc
+echo "ELECTRON_OZONE_PLATFORM_HINT=auto" >> ~/.zshrc
+sudo sh -c "echo 'ELECTRON_OZONE_PLATFORM_HINT=auto' >> /etc/profile.d/electron.sh"
+
 echo "Make some folders"
 mkdir ~/Repositories
 
@@ -104,6 +115,8 @@ sudo dnf copr enable jstaf/onedriver
 sudo dnf5 install -y onedriver
 
 echo "Download fonts"
-sudo dnf5 install -y ibm-plex-fonts-all rsms-inter-fonts
+sudo dnf5 install -y cabextract xorg-x11-font-utils fontconfig
+sudo rpm -i https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
+sudo dnf5 install -y ibm-plex-fonts-all rsms-inter-fonts jetbrains-mono-fonts-all google-roboto* liberation-fonts
 
 echo -e '\nDone!'

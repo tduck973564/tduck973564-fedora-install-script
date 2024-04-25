@@ -1,6 +1,6 @@
 echo "Remove useless apps"
 
-sudo dnf5 remove akregator krusader konversation k3b kontact kmail korganizer kaddressbook *akonadi* kcalc krdc krfb
+sudo dnf5 remove akregator krusader konversation k3b kontact kmail korganizer kaddressbook *akonadi* kcalc krdc krfb kmousetool *abrt* neochat mariadb mariadb-backup mariadb-common mariadb-cracklib-password-check mariadb-errmsg mariadb-gssapi-server mariadb-server mariadb-server-utils kmines kmahjongg kpat
 
 echo "Install some apps"
 
@@ -10,12 +10,14 @@ org.kde.kweather
 org.kde.francis
 org.kde.kalk
 org.kde.kget
-org.kde.ktorrent )
+org.kde.ktorrent
+org.kde.digikam )
+
 for app in ${FLATPAK_FLATHUB[@]}; do
 	flatpak install -y flathub "$app"
 done
 
-sudo dnf5 install -y libreoffice kdenetwork-filesharing plasma-firewall kcolorchooser
+sudo dnf5 install -y libreoffice kdenetwork-filesharing kcolorchooser
 kwriteconfig5 --file kdesurc --group super-user-command --key super-user-command sudo
 
 #echo "Install konsave"
