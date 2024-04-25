@@ -64,7 +64,7 @@ read GITEMAIL
 git config --global user.name $GITUSERNAME
 git config --global user.email $GITEMAIL
 
-echo "Installation of apps and printer driver"
+echo "Installation of apps and drivers"
 
 sudo dnf5 remove -y \
 fedora-bookmarks \
@@ -73,7 +73,8 @@ mediawriter
 sudo dnf5 install -y \
 firewall-config \
 openssl openssl-libs \
-python3-pip
+python3-pip \
+steam-devices
 
 sudo dnf5 install -y \
 epson-inkjet-printer-escpr2 \
