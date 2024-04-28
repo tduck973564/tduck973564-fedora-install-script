@@ -4,7 +4,7 @@ sudo dnf copr enable kwizart/nvidia-driver-rawhide -y
 sudo dnf install rpmfusion-nonfree-release-rawhide -y
 sudo dnf --enablerepo=rpmfusion-nonfree-rawhide install -y akmod-nvidia xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda --nogpgcheck
 sudo dnf install -y xorg-x11-drv-nvidia-cuda-libs
-sudo akmods
+sudo akmods --force
 cat <<EOF | sudo tee /etc/modprobe.d/blacklist-nouveau.conf
 blacklist nouveau
 options nouveau modeset=0
