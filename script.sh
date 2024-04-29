@@ -35,6 +35,8 @@ sudo dnf swap -y mesa-vdpau-drivers.i686 mesa-vdpau-drivers-freeworld.i686
 sudo dnf install -y gstreamer1-plugin-openh264 mozilla-openh264
 sudo dnf install -y lame\* --exclude=lame-devel
 
+sudo dnf install -y libheif libheif-tools
+
 echo "Install Flathub"
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak remote-modify --enable flathub
