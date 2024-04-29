@@ -9,7 +9,6 @@ echo "Speed up DNF"
 sudo dnf install dnf-plugins-core -y
 sudo echo 'fastestmirror=True' | sudo tee -a /etc/dnf/dnf.conf
 sudo echo 'max_parallel_downloads=10' | sudo tee -a /etc/dnf/dnf.conf
-sudo echo 'deltarpm=true' | sudo tee -a /etc/dnf/dnf.conf
 sudo echo 'countme=false' | sudo tee -a /etc/dnf/dnf.conf
 
 echo "Update system before continuing"
@@ -34,7 +33,6 @@ sudo dnf swap -y mesa-va-drivers.i686 mesa-va-drivers-freeworld.i686
 sudo dnf swap -y mesa-vdpau-drivers.i686 mesa-vdpau-drivers-freeworld.i686
 sudo dnf install -y gstreamer1-plugin-openh264 mozilla-openh264
 sudo dnf install -y lame\* --exclude=lame-devel
-
 sudo dnf install -y libheif libheif-tools
 
 echo "Install Flathub"
@@ -52,6 +50,7 @@ zimfw install
 echo "Use dnf5"
 sudo dnf install -y dnf5
 echo "PATH=$PATH:$HOME/.local/bin" >> ~/.zshrc
+echo "PATH=$PATH:$HOME/.local/bin" >> ~/.bashrc
 mkdir ~/.local/bin
 ln -sf /usr/bin/dnf5 ~/.local/bin/dnf
 
