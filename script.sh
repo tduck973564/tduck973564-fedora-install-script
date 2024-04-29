@@ -64,6 +64,7 @@ read GITEMAIL
 
 git config --global user.name $GITUSERNAME
 git config --global user.email $GITEMAIL
+git config --global push.autoSetupRemote true
 
 echo "Installation of apps and drivers"
 
