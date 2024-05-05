@@ -18,7 +18,8 @@ for app in ${FLATPAK_FLATHUB[@]}; do
 done
 
 sudo dnf5 install -y libreoffice kdenetwork-filesharing kcolorchooser
-kwriteconfig5 --file kdesurc --group super-user-command --key super-user-command sudo
+sudo sh -c "echo '[super-user-command]
+super-user-command=sudo' >> /etc/xdg/kdesurc"
 
 #echo "Install konsave"
 

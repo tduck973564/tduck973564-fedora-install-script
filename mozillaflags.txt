@@ -1,0 +1,11 @@
+# Firefox
+widget.use-xdg-desktop-portal.file-picker   1
+browser.low_commit_space_threshold_mb       750
+browser.tabs.unloadOnLowMemory              true
+
+# Thunderbird
+widget.use-xdg-desktop-portal.file-picker   1
+mailnews.default_sort_order                 2
+mailnews.default_sort_type                  22
+mailnews.default_news_sort_order            2
+mailnews.default_news_sort_type             22

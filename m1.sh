@@ -138,4 +138,14 @@ digikam \
 thunderbird
 
 sudo dnf5 install -y libreoffice kdenetwork-filesharing kcolorchooser
-kwriteconfig5 --file kdesurc --group super-user-command --key super-user-command sudo
+sudo sh -c "echo '[super-user-command]
+super-user-command=sudo' >> /etc/xdg/kdesurc"
+
+echo "Enlarge swapfile"
+sudo swapoff -a
+sudo dd if=/dev/zero of=/var/swap/swapfile bs=1M count=16384
+sudo chattr +C /var/swap
+sudo chattr +C /var/swap/swapfile
+sudo mkswap /var/swap/swapfile
+sudo chmod 0600 /var/swap/swapfile
+sudo swapon /var/swap/swapfile
