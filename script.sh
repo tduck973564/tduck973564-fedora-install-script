@@ -121,9 +121,7 @@ sudo dnf5 install -y cabextract xorg-x11-font-utils fontconfig
 sudo rpm -i https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
 sudo dnf5 install -y ibm-plex-fonts-all rsms-inter-fonts jetbrains-mono-fonts-all google-roboto* liberation-fonts
 
-echo "Powertop"
-sudo dnf install -y powertop
-sudo powertop --auto-tune
-sudo systemctl enable --now powertop
+echo "Mask hibernate"
+sudo systemctl mask hibernate.target
 
 echo -e '\nDone!'

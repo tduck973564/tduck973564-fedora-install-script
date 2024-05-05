@@ -112,6 +112,9 @@ sudo dnf5 install -y cabextract xorg-x11-font-utils fontconfig
 sudo rpm -i https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
 sudo dnf5 install -y ibm-plex-fonts-all rsms-inter-fonts jetbrains-mono-fonts-all google-roboto* liberation-fonts
 
+echo "Mask hibernate"
+sudo systemctl mask hibernate.target
+
 echo "Powertop"
 sudo dnf install -y powertop
 sudo powertop --auto-tune
@@ -136,11 +139,3 @@ thunderbird
 
 sudo dnf5 install -y libreoffice kdenetwork-filesharing kcolorchooser
 kwriteconfig5 --file kdesurc --group super-user-command --key super-user-command sudo
-
-echo "Create swapfile"
-sudo swapoff -a
-sudo dd if=/dev/zero of=/swapfile bs=1M count=16384
-sudo chattr +C /swapfile
-sudo mkswap /swapfile
-sudo chmod 0600 /swapfile
-sudo sh -c "echo '/swapfile none swap sw 0 0' >> /etc/fstab"
