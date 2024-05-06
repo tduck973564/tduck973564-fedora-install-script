@@ -35,8 +35,7 @@ sudo sh -c "touch /etc/xdg/discoverrc && echo '
 Sources=flathub,fedora-testing,fedora
 
 [ResourcesModel]
-currentApplicationBackend=flatpak-backend
-' >> /etc/xdg/discoverrc"
+currentApplicationBackend=flatpak-backend' >> /etc/xdg/discoverrc"
 
 # konsolerc - Konsole
 sudo sh -c "touch /etc/xdg/konsolerc && echo '
