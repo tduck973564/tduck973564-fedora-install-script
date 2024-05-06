@@ -18,133 +18,105 @@ for app in ${FLATPAK_FLATHUB[@]}; do
 done
 
 sudo dnf5 install -y libreoffice kdenetwork-filesharing kcolorchooser
-sudo sh -c "echo '[super-user-command]
-super-user-command=sudo' >> /etc/xdg/kdesurc"
 
-#echo "Install konsave"
+echo "Set environment variables"
+sudo sh -c "touch /etc/profile.d/kde-qml-font-fix.sh && echo 'QT_SCALE_FACTOR_ROUNDING_POLICY=RoundPreferFloor' >> /etc/profile.d/kde-qml-font-fix.sh"
 
-#python -m pip install konsave
-#echo "PATH=$PATH:$HOME/.local/bin" >> ~/.zshrc
-#source ~/.zshrc
-#konsave --help
-echo '---
-# This is the configuration file for konsave.
-# This file is pre-configured for KDE Plasma users.
-# This will backup all the important files for your Plasma customizations.
-# Please make sure it follows the correct format for proper working of Konsave.
-# The format should be:
-# ---
-# save:
-#     name:
-#         location: "path/to/parent/directory"
-#         entries:
-#         # these are files which will be backed up.
-#         # They should be present in the specified location.
-#             - file1
-#             - file2
-# export:
-#     # This includes files which will be exported with your profile.
-#     # They will not be saved but only be exported and imported.
-#     # These may include files like complete icon packs and themes..
-#     name:
-#         location: "path/to/parent/directory"
-#         entries:
-#             - file1
-#             - file2
-# ...
-# You can use these placeholders in the "location" of each item:
-# $HOME: the home directory
-# $CONFIG_DIR: refers to "$HOME/.config/"
-# $SHARE_DIR: refers to "$HOME/.local/share"
-# $BIN_DIR: refers to "$HOME/.local/bin"
-# ${ENDS_WITH="text"}: for folders with different names on different computers whose names end with the same thing.
-# The best example for this is the "*.default-release" folder of firefox.
-# ${BEGINS_WITH="text"}: for folders with different names on different computers whose names start with the same thing.
+echo "Set configuration options"
 
-save:
-    configs:
-        location: "$CONFIG_DIR"
-        entries:
-            - gtk-2.0
-            - gtk-3.0
-            - gtk-4.0
-            - kate
-            - Kvantum
-            - latte
-            - dolphinrc
-            - katerc
-            - konsolerc
-            - kcminputrc
-            - kdeglobals
-            - kglobalshortcutsrc
-            - klipperrc
-            - krunnerrc
-            - kscreenlockerrc
-            - ksmserverrc
-            - kwinrc
-            - kwinrulesrc
-            - plasma-org.kde.plasma.desktop-appletsrc
-            - plasmarc
-            - plasmashellrc
-            - gtkrc
-            - gtkrc-2.0
-            - lattedockrc
-            - breezerc
-            - oxygenrc
-            - lightlyrc
-            - ksplashrc
-            - khotkeysrc
+# kdesurc
+sudo sh -c "touch /etc/xdg/kdesurc && echo '
+[super-user-command]
+super-user-command=sudo' > /etc/xdg/kdesurc"
 
-    app_layouts:
-        location: "$HOME/.local/share/kxmlgui5"
-        entries:
-            - dolphin
-            - konsole
+# discoverrc - Discover
+sudo sh -c "touch /etc/xdg/discoverrc && echo '
+[FlatpakSources]
+Sources=flathub,fedora-testing,fedora
 
-    # Here are a few examples of how you can add more stuff to back up.
-    # Uncomment these lines if you want.
-    # firefox:
-    #     location: "$HOME/.mozilla/firefox/${ENDS_WITH='.default-release'}"
-    #     entries:
-    #         - chrome # for firefox customizations
+[ResourcesModel]
+currentApplicationBackend=flatpak-backend
+' >> /etc/xdg/discoverrc"
 
-    # code oss:
-    #     location: "$CONFIG_DIR/Code - OSS/User/"
-    #     entries:
-    #         - settings.json
+# konsolerc - Konsole
+sudo sh -c "touch /etc/xdg/konsolerc && echo '
+[FileLocation]
+scrollbackUseCacheLocation=true
+scrollbackUseSystemLocation=false
 
+[MainWindow]
+MenuBar=Enabled
+ToolBarsMovable=Disabled
 
-# The following files will only be used for exporting and importing.
-export:
-    share_folder:
-        location: "$SHARE_DIR"
-        entries:
-            - plasma
-            - kwin
-            - konsole
-            - fonts
-            - color-schemes
-            - aurorae
-            - icons
-            - wallpapers
+[TabBar]
+NewTabButton=true' > /etc/xdg/konsolerc"
 
-    home_folder:
-        location: "$HOME/"
-        entries:
-            - .fonts
-            - .themes
-            - .icons
+# kdeglobals - fonts and theme
+sudo sh -c "touch /etc/xdg/kdeglobals && echo '
+[General]
+fixed=IBM Plex Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+font=Inter,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+menuFont=Inter,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+smallestReadableFont=Inter,8,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+toolBarFont=Inter,9,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
 
+[KDE]
+LookAndFeelPackage=org.kde.breezetwilight.desktop
+ShowDeleteCommand=false' >> /etc/xdg/kdeglobals"
 
-    # You can add more files to export like this
-    # name:
-    #     location: "path/to/parent/directory"
-    #     entries:
-    #         - file1
-    #         - file2
-    #         - folder1
-    #         - folder2
-...' > ~/.config/konsave/conf.yaml
+# kwinrc - Desktop Effects
+sudo sh -c "touch /etc/xdg/kwinrc && echo '
+[Plugins]
+blurEnabled=true
+contrastEnabled=true
+dimscreenEnabled=true
+windowviewEnabled=false' >> /etc/xdg/kwinrc"
 
-#echo "Import konsave config"
-#konsave --import-profile plasmaprofile.knsv
+# kuriikwsfilterrc - Web Search Keywords
+sudo sh -c "touch /etc/xdg/kuriikwsfilterrc && echo '
+[General]
+DefaultWebShortcut=google
+EnableWebShortcuts=true
+KeywordDelimiter=:
+PreferredWebShortcuts=yahoo,google,youtube,wikipedia,wikit
+UsePreferredWebShortcutsOnly=false' >> /etc/xdg/kuriikwsfilterrc"
+
+# kded5rc, device_automounter_kcmrc, kded_device_automounterrc - Drive Automount
+sudo sh -c "touch /etc/xdg/kded5rc && echo '
+[Module-device_automounter]
+autoload=true' > /etc/xdg/kded5rc"
+sudo sh -c "touch /etc/xdg/kded_device_automounterrc && echo '
+[General]
+AutomountEnabled=true
+AutomountOnLogin=true
+AutomountOnPlugin=true' >> /etc/xdg/kded_device_automounterrc"
+
+# ksplashrc - Splash Screen
+sudo sh -c "touch /etc/xdg/ksplashrc && echo '
+[KSplash]
+Theme=org.kde.breeze.desktop' >> /etc/xdg/ksplashrc"
+
+# sddm.conf.d - SDDM Theming
+sudo sh -c "touch /etc/sddm.conf.d/10-custom-defaults.conf && echo '
+[Theme]
+Current=breeze
+CursorTheme=breeze_cursors
+Font=Inter,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1' >> /etc/sddm.conf.d/10-custom-defaults.conf"
+
+# krunnerrc - KRunner
+sudo sh -c "touch /etc/xdg/krunnerrc && echo '
+[General]
+FreeFloating=true' >> /etc/xdg/krunnerrc"
+
+# kwriterc - KWrite
+sudo sh -c "touch /etc/xdg/kwriterc && echo '
+[KTextEditor Renderer]
+Text Font=IBM Plex Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+
+[General]
+Show welcome view for new window=false' >> /etc/xdg/kwriterc"
+
+# spectaclerc - Spectacle
+sudo sh -c "touch /etc/xdg/spectaclerc && echo '
+[General]
+clipboardGroup=PostScreenshotCopyImage' >> /etc/xdg/spectaclerc"
