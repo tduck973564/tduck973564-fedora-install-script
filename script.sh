@@ -49,8 +49,6 @@ zimfw install
 
 echo "Use dnf5"
 sudo dnf install -y dnf5
-echo "PATH=$PATH:$HOME/.local/bin" >> ~/.zshrc
-echo "PATH=$PATH:$HOME/.local/bin" >> ~/.bashrc
 mkdir ~/.local/bin
 ln -sf /usr/bin/dnf5 ~/.local/bin/dnf
 
