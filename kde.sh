@@ -99,7 +99,6 @@ Theme=org.kde.breeze.desktop' >> /etc/xdg/ksplashrc"
 sudo sh -c "touch /etc/sddm.conf.d/10-custom-defaults.conf && echo '
 [Theme]
 Current=breeze
-CursorTheme=breeze_cursors
 Font=Inter,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1' >> /etc/sddm.conf.d/10-custom-defaults.conf"
 
 # krunnerrc - KRunner

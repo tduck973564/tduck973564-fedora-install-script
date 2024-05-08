@@ -80,6 +80,7 @@ p7zip \
 p7zip-plugins \
 unzip \
 unrar \
+setroubleshoot \
 steam-devices
 
 sudo dnf5 install -y \

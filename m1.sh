@@ -50,8 +50,6 @@ zimfw install
 
 echo "Use dnf5"
 sudo dnf install -y dnf5
-echo "PATH=$PATH:$HOME/.local/bin" >> ~/.zshrc
-echo "PATH=$PATH:$HOME/.local/bin" >> ~/.bashrc
 mkdir ~/.local/bin
 ln -sf /usr/bin/dnf5 ~/.local/bin/dnf
 
@@ -82,7 +80,8 @@ nmap \
 p7zip \
 p7zip-plugins \
 unzip \
-unrar
+unrar \
+setroubleshoot
 
 sudo dnf5 install -y \
 epson-inkjet-printer-escpr2 \
@@ -96,9 +95,6 @@ echo "Enable wayland by default in supported electron apps"
 echo "ELECTRON_OZONE_PLATFORM_HINT=auto" >> ~/.bashrc
 echo "ELECTRON_OZONE_PLATFORM_HINT=auto" >> ~/.zshrc
 sudo sh -c "echo 'ELECTRON_OZONE_PLATFORM_HINT=auto' >> /etc/profile.d/electron.sh"
-
-echo "Make some folders"
-mkdir ~/Repositories
 
 echo "Increase vm max map count"
 sudo sh -c "echo 'vm.max_map_count=2147483642' >> /etc/sysctl.conf"
@@ -114,6 +110,11 @@ sudo dnf5 install -y ibm-plex-fonts-all rsms-inter-fonts jetbrains-mono-fonts-al
 
 echo "Mask hibernate"
 sudo systemctl mask hibernate.target
+
+echo "Set environment variables"
+
+echo "Enable wayland by default in supported electron apps"
+sudo sh -c "touch /etc/profile.d/electron.sh && echo 'ELECTRON_OZONE_PLATFORM_HINT=auto' > /etc/profile.d/electron.sh"
 
 echo "Powertop"
 sudo dnf install -y powertop
@@ -138,8 +139,103 @@ digikam \
 thunderbird
 
 sudo dnf5 install -y libreoffice kdenetwork-filesharing kcolorchooser
-sudo sh -c "echo '[super-user-command]
-super-user-command=sudo' >> /etc/xdg/kdesurc"
+
+echo "Set environment variables"
+sudo sh -c "touch /etc/profile.d/kde-qml-font-fix.sh && echo 'QT_SCALE_FACTOR_ROUNDING_POLICY=RoundPreferFloor' >> /etc/profile.d/kde-qml-font-fix.sh"
+
+echo "Set configuration options"
+
+# kdesurc
+sudo sh -c "touch /etc/xdg/kdesurc && echo '
+[super-user-command]
+super-user-command=sudo' > /etc/xdg/kdesurc"
+
+# discoverrc - Discover
+sudo sh -c "touch /etc/xdg/discoverrc && echo '
+[FlatpakSources]
+Sources=flathub,fedora-testing,fedora' >> /etc/xdg/discoverrc"
+
+# konsolerc - Konsole
+sudo sh -c "touch /etc/xdg/konsolerc && echo '
+[FileLocation]
+scrollbackUseCacheLocation=true
+scrollbackUseSystemLocation=false
+
+[MainWindow]
+MenuBar=Enabled
+ToolBarsMovable=Disabled
+
+[TabBar]
+NewTabButton=true' > /etc/xdg/konsolerc"
+
+# kdeglobals - fonts and theme
+sudo sh -c "touch /etc/xdg/kdeglobals && echo '
+[General]
+fixed=IBM Plex Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+font=Inter,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+menuFont=Inter,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+smallestReadableFont=Inter,8,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+toolBarFont=Inter,9,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+
+[KDE]
+LookAndFeelPackage=org.kde.breezetwilight.desktop
+ShowDeleteCommand=false' >> /etc/xdg/kdeglobals"
+
+# kwinrc - Desktop Effects
+sudo sh -c "touch /etc/xdg/kwinrc && echo '
+[Plugins]
+blurEnabled=true
+contrastEnabled=true
+dimscreenEnabled=true
+windowviewEnabled=false' >> /etc/xdg/kwinrc"
+
+# kuriikwsfilterrc - Web Search Keywords
+sudo sh -c "touch /etc/xdg/kuriikwsfilterrc && echo '
+[General]
+DefaultWebShortcut=google
+EnableWebShortcuts=true
+KeywordDelimiter=:
+PreferredWebShortcuts=yahoo,google,youtube,wikipedia,wikit
+UsePreferredWebShortcutsOnly=false' >> /etc/xdg/kuriikwsfilterrc"
+
+# kded5rc, device_automounter_kcmrc, kded_device_automounterrc - Drive Automount
+sudo sh -c "touch /etc/xdg/kded5rc && echo '
+[Module-device_automounter]
+autoload=true' > /etc/xdg/kded5rc"
+sudo sh -c "touch /etc/xdg/kded_device_automounterrc && echo '
+[General]
+AutomountEnabled=true
+AutomountOnLogin=true
+AutomountOnPlugin=true' >> /etc/xdg/kded_device_automounterrc"
+
+# ksplashrc - Splash Screen
+sudo sh -c "touch /etc/xdg/ksplashrc && echo '
+[KSplash]
+Theme=org.kde.breeze.desktop' >> /etc/xdg/ksplashrc"
+
+# sddm.conf.d - SDDM Theming
+sudo sh -c "touch /etc/sddm.conf.d/10-custom-defaults.conf && echo '
+[Theme]
+Current=breeze
+Font=Inter,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1' >> /etc/sddm.conf.d/10-custom-defaults.conf"
+
+# krunnerrc - KRunner
+sudo sh -c "touch /etc/xdg/krunnerrc && echo '
+[General]
+FreeFloating=true' >> /etc/xdg/krunnerrc"
+
+# kwriterc - KWrite
+sudo sh -c "touch /etc/xdg/kwriterc && echo '
+[KTextEditor Renderer]
+Text Font=IBM Plex Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+
+[General]
+Show welcome view for new window=false' >> /etc/xdg/kwriterc"
+
+# spectaclerc - Spectacle
+sudo sh -c "touch /etc/xdg/spectaclerc && echo '
+[General]
+clipboardGroup=PostScreenshotCopyImage' >> /etc/xdg/spectaclerc"
 
 echo "Enlarge swapfile"
 sudo swapoff -a
