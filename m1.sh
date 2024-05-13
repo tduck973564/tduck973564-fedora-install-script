@@ -41,7 +41,7 @@ sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub
 sudo flatpak remote-modify --enable flathub
 
 echo "Installation of Zim"
-sudo dnf install -y util-linux-user zsh git git-clang-format
+sudo dnf install -y util-linux-user zsh git git-clang-format perl perl-IPC-Cmd perl-MD5 perl-FindBin
 chsh -s /usr/bin/zsh
 curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
 echo "setopt +o nomatch" >> ~/.zshrc

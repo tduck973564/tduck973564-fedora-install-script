@@ -9,3 +9,4 @@ mailnews.default_sort_order                 2
 mailnews.default_sort_type                  22
 mailnews.default_news_sort_order            2
 mailnews.default_news_sort_type             22
+browser.low_commit_space_threshold_mb       750
