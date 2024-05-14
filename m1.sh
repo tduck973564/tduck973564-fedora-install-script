@@ -179,7 +179,10 @@ toolBarFont=Inter,9,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
 
 [KDE]
 LookAndFeelPackage=org.kde.breezetwilight.desktop
-ShowDeleteCommand=false' >> /etc/xdg/kdeglobals"
+ShowDeleteCommand=false
+
+[WM]
+activeFont=Inter,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1' >> /etc/xdg/kdeglobals"
 
 # kwinrc - Desktop Effects
 sudo sh -c "touch /etc/xdg/kwinrc && echo '
