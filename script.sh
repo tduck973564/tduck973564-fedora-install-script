@@ -100,9 +100,6 @@ then
   flatpak override --user --env=MOZ_ENABLE_WAYLAND=1 org.mozilla.Thunderbird
 fi
 
-echo "Increase vm max map count"
-sudo sh -c "echo 'vm.max_map_count=2147483642' >> /etc/sysctl.conf"
-
 echo "Install OneDriver"
 sudo dnf copr enable jstaf/onedriver
 sudo dnf5 install -y onedriver
@@ -115,22 +112,8 @@ sudo dnf5 install -y ibm-plex-fonts-all rsms-inter-fonts jetbrains-mono-fonts-al
 echo "Mask hibernate"
 sudo systemctl mask hibernate.target
 
-echo "Set environment variables"
-
-echo "Enable wayland by default in supported electron apps"
-sudo sh -c "touch /etc/profile.d/electron.sh && echo 'ELECTRON_OZONE_PLATFORM_HINT=auto' > /etc/profile.d/electron.sh"
-
-echo "Set nvidia options"
-sudo sh -c "touch /etc/profile.d/nvidia.sh && echo '
-MODULE=\"nvidia\"
-if lsmod | grep -wq \"\$MODULE\"; then
-    LIBVA_DRIVER_NAME=nvidia
-    MOZ_DISABLE_RDD_SANDBOX=1
-    EGL_PLATFORM=$XDG_SESSION_TYPE
-fi' > /etc/profile.d/nvidia.sh"
-
-echo "Enable obs vulkan capture"
-sudo sh -c "touch /etc/profile.d/obs.sh && echo '
-OBS_VKCAPTURE=1' > /etc/profile.d/obs.sh"
+echo "Install environment variables"
+sudo dnf copr enable -y tduck973564/filotimo-packages
+sudo dnf5 install -y filotimo-environment
 
 echo -e '\nDone!'
