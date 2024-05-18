@@ -15,8 +15,11 @@ echo "Update system before continuing"
 sudo dnf --refresh upgrade -y
 flatpak update
 
+echo "Enable filotimo packages"
+sudo dnf copr enable -y tduck973564/filotimo-packages
+
 echo "Installation of RPMFusion and codecs"
-sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install -y filotimo-repositories
 sudo dnf groupupdate -y core --allowerasing
 sudo dnf swap -y ffmpeg-free ffmpeg --allowerasing
 sudo dnf groupupdate multimedia -y --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin --allowerasing --with-optional
@@ -113,7 +116,6 @@ echo "Mask hibernate"
 sudo systemctl mask hibernate.target
 
 echo "Install environment variables"
-sudo dnf copr enable -y tduck973564/filotimo-packages
 sudo dnf5 install -y filotimo-environment
 
 echo -e '\nDone!'
