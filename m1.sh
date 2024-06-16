@@ -249,10 +249,6 @@ sudo mkswap /var/swap/swapfile
 sudo chmod 0600 /var/swap/swapfile
 sudo swapon /var/swap/swapfile
 
-echo "Don't overcommit"
-sudo sysctl vm.overcommit_memory=2
-sudo sysctl vm.overcommit_ratio=30
-
 echo "Change zram algorithm"
 sudo touch /etc/modules-load.d/zstd.conf
 sudo sh -c "echo 'zstd' > /etc/modules-load.d/zstd.conf"
