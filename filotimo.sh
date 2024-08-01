@@ -62,6 +62,6 @@ systemctl mask hibernate.target
 
 dnf5 remove -y akregator krusader konversation k3b kontact kmail korganizer kaddressbook *akonadi* krdc krfb kmousetool *abrt* mariadb mariadb-backup mariadb-common mariadb-cracklib-password-check mariadb-errmsg mariadb-gssapi-server mariadb-server mariadb-server-utils kmines kmahjongg kpat
 
-dnf5 install -y kleopatra kclock kweather francis kget ktorrent digikam krecorder libreoffice kdenetwork-filesharing kcolorchooser steam
+dnf5 install -y kleopatra kclock kweather francis kget ktorrent digikam krecorder libreoffice kdenetwork-filesharing kcolorchooser
 
 EOF
