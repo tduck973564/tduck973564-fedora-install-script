@@ -2,7 +2,7 @@
 
 tmpfile=$(mktemp)
 
-pkexec sh -c <(cat <<EOF
+cat <<EOF > "$tmpfile"
 dnf install dnf-plugins-core -y
 echo 'fastestmirror=True' | tee -a /etc/dnf/dnf.conf
 echo 'max_parallel_downloads=10' | tee -a /etc/dnf/dnf.conf
@@ -68,3 +68,4 @@ dnf5 remove -y akregator krusader konversation k3b kontact kmail korganizer kadd
 dnf5 install -y kleopatra kclock kweather francis kget ktorrent digikam krecorder libreoffice kdenetwork-filesharing kcolorchooser
 EOF
 )
+pkexec bash "$tmpfile"
