@@ -1,6 +1,8 @@
 #!/bin/bash
 
-pkexec sh -c <<EOF
+tmpfile=$(mktemp)
+
+pkexec sh -c <(cat <<EOF
 dnf install dnf-plugins-core -y
 echo 'fastestmirror=True' | tee -a /etc/dnf/dnf.conf
 echo 'max_parallel_downloads=10' | tee -a /etc/dnf/dnf.conf
@@ -64,5 +66,5 @@ systemctl mask hibernate.target
 dnf5 remove -y akregator krusader konversation k3b kontact kmail korganizer kaddressbook *akonadi* krdc krfb kmousetool *abrt* mariadb mariadb-backup mariadb-common mariadb-cracklib-password-check mariadb-errmsg mariadb-gssapi-server mariadb-server mariadb-server-utils kmines kmahjongg kpat
 
 dnf5 install -y kleopatra kclock kweather francis kget ktorrent digikam krecorder libreoffice kdenetwork-filesharing kcolorchooser
-
 EOF
+)
