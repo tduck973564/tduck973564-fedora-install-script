@@ -9,7 +9,7 @@ echo 'countme=false' | tee -a /etc/dnf/dnf.conf
 dnf --refresh upgrade -y
 flatpak update
 
-dnf config-manager addrepo https://mirrorcache-au.opensuse.org/repositories/home:/tduck:/filotimolinux/Fedora_40/home:tduck:filotimolinux.repo
+dnf config-manager addrepo "https://mirrorcache-au.opensuse.org/repositories/home:/tduck:/filotimolinux/Fedora_40/home:tduck:filotimolinux.repo"
 dnf install -y filotimo-repos
 yes | dnf install -y --refresh --best --allowerasing filotimo-atychia filotimo-backgrounds filotimo-branding filotimo-dnfdragora filotimo-environment filotimo-grub-theme filotimo-kde-overrides filotimo-plymouth-theme filotimo-release-kde appimagelauncher
 yes | dnf-3 --refresh upgrade -y
