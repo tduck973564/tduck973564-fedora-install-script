@@ -32,8 +32,8 @@ dnf install -y gstreamer1-plugin-openh264 mozilla-openh264
 dnf install -y lame\* --exclude=lame-devel
 dnf install -y libheif libheif-tools
 
-flatpak remote-add --if-not-exists -y flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak remote-modify --enable -y flathub
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-modify --enable flathub
 
 sudo dnf5 install -y \
 firewall-config \
@@ -70,6 +70,10 @@ sudo dnf5 install -y ibm-plex-fonts-all rsms-inter-fonts jetbrains-mono-fonts-al
 
 dnf5 remove -y akregator krusader konversation k3b kontact kmail korganizer kaddressbook *akonadi* krdc krfb kmousetool *abrt* mariadb mariadb-backup mariadb-common mariadb-cracklib-password-check mariadb-errmsg mariadb-gssapi-server mariadb-server mariadb-server-utils kmines kmahjongg kpat
 
-dnf5 install -y kleopatra kclock kweather francis kget ktorrent digikam krecorder libreoffice kdenetwork-filesharing kcolorchooser
+dnf5 install -y kleopatra kclock kweather francis kget ktorrent krecorder libreoffice kdenetwork-filesharing kcolorchooser
+
+systemctl enable smb
+firewall-cmd --permanent --add-service samba
+
 EOF
 pkexec bash "$tmpfile"
