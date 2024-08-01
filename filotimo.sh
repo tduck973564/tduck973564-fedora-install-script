@@ -67,5 +67,4 @@ dnf5 remove -y akregator krusader konversation k3b kontact kmail korganizer kadd
 
 dnf5 install -y kleopatra kclock kweather francis kget ktorrent digikam krecorder libreoffice kdenetwork-filesharing kcolorchooser
 EOF
-)
 pkexec bash "$tmpfile"
