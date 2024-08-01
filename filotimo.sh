@@ -13,10 +13,10 @@ dnf config-manager addrepo https://mirrorcache-au.opensuse.org/repositories/home
 dnf install -y filotimo-repos
 dnf install -y --refresh --best --allowerasing filotimo-atychia filotimo-backgrounds filotimo-branding filotimo-dnfdragora filotimo-environment filotimo-grub-theme filotimo-kde-overrides filotimo-plymouth-theme filotimo-release-kde appimagelauncher
 dnf --refresh upgrade -y
-dnf groupupdate -y core --allowerasing
+dnf group upgrade -y core --allowerasing
 dnf swap -y ffmpeg-free ffmpeg --allowerasing
-dnf groupupdate multimedia -y --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin --allowerasing --with-optional
-dnf groupupdate -y sound-and-video
+dnf group upgrade multimedia -y --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin --allowerasing --with-optional
+dnf group upgrade -y sound-and-video
 dnf install -y rpmfusion-free-release-tainted
 dnf install -y libdvdcss
 dnf install -y rpmfusion-nonfree-release-tainted
