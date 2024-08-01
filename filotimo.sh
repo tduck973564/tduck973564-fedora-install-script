@@ -11,8 +11,9 @@ flatpak update
 
 dnf config-manager addrepo https://mirrorcache-au.opensuse.org/repositories/home:/tduck:/filotimolinux/Fedora_40/home:tduck:filotimolinux.repo
 dnf install -y filotimo-repos
-dnf install -y --refresh --best --allowerasing filotimo-atychia filotimo-backgrounds filotimo-branding filotimo-dnfdragora filotimo-environment filotimo-grub-theme filotimo-kde-overrides filotimo-plymouth-theme filotimo-release-kde appimagelauncher
-dnf --refresh upgrade -y
+yes | dnf install -y --refresh --best --allowerasing filotimo-atychia filotimo-backgrounds filotimo-branding filotimo-dnfdragora filotimo-environment filotimo-grub-theme filotimo-kde-overrides filotimo-plymouth-theme filotimo-release-kde appimagelauncher
+yes | dnf-3 --refresh upgrade -y
+yes | dnf5 --refresh upgrade -y
 dnf group upgrade -y core --allowerasing
 dnf swap -y ffmpeg-free ffmpeg --allowerasing
 dnf group upgrade multimedia -y --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin --allowerasing --with-optional
