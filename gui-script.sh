@@ -223,7 +223,7 @@ echo '[super-user-command]
 super-user-command=sudo' > /etc/xdg/kdesurc
 qdbus \$dlg Set '' value 37
 
-echo '[General]s
+echo '[General]
 FreeFloating=true' > /etc/xdg/krunnerrc
 qdbus \$dlg Set '' value 38
 
