@@ -158,8 +158,8 @@ qdbus \$dlg Set '' value 31
 echo 'export QT_SCALE_FACTOR_ROUNDING_POLICY=RoundPreferFloor' > /etc/profile.d/kde-font-fix.sh
 qdbus \$dlg Set '' value 32
 
-echo '<?xml version='1.0'?>
-<!DOCTYPE fontconfig SYSTEM 'urn:fontconfig:fonts.dtd'>
+echo '<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
 <fontconfig>
   <alias>
     <family>serif</family>
