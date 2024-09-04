@@ -123,8 +123,15 @@ fi
 qdbus \$dlg Set '' value 24
 
 if lspci | grep -i "NVIDIA" > /dev/null; then
-    dnf install -y akmod-nvidia-open xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-power
     qdbus \$dlg setLabelText 'Setting up NVIDIA support...'
+    if lspci | grep -i "NVIDIA" | grep -E "[2-9][0-9]{3}" > /dev/null; then
+        echo "NVIDIA GPU is 2000 series or newer, using open kernel modules..."
+        dnf install -y akmod-nvidia-open
+    else
+        echo "NVIDIA GPU is older than 2000 series, using proprietary kernel modules..."
+        dnf install -y akmod-nvidia
+    fi
+    dnf install -y xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-power
     systemctl enable nvidia-{suspend,resume,hibernate}
     qdbus \$dlg Set '' value 25
     grubby --update-kernel=ALL --args='nvidia-drm.modeset=1'
